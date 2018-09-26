@@ -39,7 +39,7 @@
             <div class="header">Content</div>
             <div class="menu">
               <% contentSections.forEach(s => { %>
-                <a href="/dashboard/sections/<%- s.id %>" class="<% if (typeof section !== 'undefined' && s.id == section.id) { %>active <% } %>item">
+                <a href="/dashboard/sections/<%- s.id %>/" class="<% if (typeof section !== 'undefined' && s.id == section.id) { %>active <% } %>item">
                   <%- include(`../../assets/dashboard/images/${s.multiple ? 'multiple' : 'single'}.svg`) %>
                   <%- s.label %>
                 </a>

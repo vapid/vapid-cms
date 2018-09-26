@@ -15,6 +15,7 @@ document.addEventListener("turbolinks:load", () => {
       const id = item.getAttribute('data-id');
 
       $.post('./records/reorder', { id, from, to }).fail((err) => {
+        // TODO: probably need some better client-side error handling here
         alert('Error: could not reorder records');
       });
     });
