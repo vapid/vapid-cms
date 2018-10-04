@@ -14,8 +14,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+          - v1-{{ .Environment.CIRCLE_STAGE }}-dependencies-{{ checksum "package.json" }}
+          - v1-{{ .Environment.CIRCLE_STAGE }}-dependencies-
 
       - run: yarn install
 
