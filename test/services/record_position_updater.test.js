@@ -18,9 +18,9 @@ describe('#perform', () => {
 
   test('appends new records', async () => {
     await new RecordPositionUpdater(record).perform();
+
     const records = await section.getRecords();
     const ids = records.map(r => r.id);
-
     expect(ids.pop()).toEqual(record.id);
   });
 
