@@ -10,8 +10,8 @@ describe('.constructor', () => {
 });
 
 describe('#input', () => {
-  test('renders Trix as the WYSIWYG editor', () => {
-    expect(vanilla.input()).toMatch(/trix-editor/);
+  test('renders Quill as the WYSIWYG editor', () => {
+    expect(vanilla.input()).toMatch(/wysiwyg/);
   });
 
   test('renders ACE editor if editor=false', () => {
@@ -30,5 +30,12 @@ describe('#render', () => {
     const directive = new HTMLDirective({ editor: 'markdown' });
     const html = '# Test <em>HTML</em>';
     expect(directive.render(html)).toMatch(/<h1>Test <em>HTML<\/em><\/h1>/);
+  });
+
+  test('removes Quill\'s extra paragraphs', () => {
+    const directive = new HTMLDirective();
+    const html = '<h2>Testing</h2><p><br></p><p>123</p>';
+    const cleaned = html.replace('<p><br></p>', '');
+    expect(directive.render(html)).toEqual(cleaned);
   });
 });

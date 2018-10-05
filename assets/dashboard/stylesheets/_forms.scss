@@ -1,11 +1,13 @@
 .form {
-  input {
+  input,
+  textarea,
+  .wysiwyg {
     font-family: inherit;
     font-size: inherit;
-    outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    outline: none;
   }
 
   input:not(.button),
@@ -22,14 +24,20 @@
     &:-moz-placeholder { color: $grey; }
   }
 
-  .ace_editor,
-  trix-editor {
+  .wysiwyg,
+  .ace_editor {
+    font-size: inherit;
+    min-height: 20rem;
     border: 1px solid $grey-light;
     border-radius: $border-radius;
   }
 
-  textarea {
-    min-height: 20rem;
+  .ql-toolbar {
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  .wysiwyg {
+    border-radius: 0 0 $border-radius $border-radius;
   }
 
   .field,
@@ -96,7 +104,7 @@
     }
 
     &.error {
-      trix-editor,
+      .wysiwyg,
       .ace_editor,
       .previewable,
       .dropdown.selection,
@@ -104,6 +112,12 @@
       input:not(.button) {
         background-color: $red-lighter;
         border-color: $red;
+      }
+
+      .ql-toolbar {
+        border-top-color: $red;
+        border-right-color: $red;
+        border-left-color: $red;
       }
     }
   }
