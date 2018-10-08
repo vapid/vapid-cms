@@ -92,6 +92,13 @@ describe('#parse', () => {
     const orderBy = new Template('{{#section offices order=city,-name}}{{/section}}').parse();
     expect(orderBy).toMatchSnapshot();
   });
+
+  test('parses conditionals', () => {
+    const conditional = '{{#if foo}}Foo{{/if}}';
+
+    expect(new Template(conditional).parse()).toMatchSnapshot();
+    expect(new Template(conditional, {}, { parseConditionals: true }).parse()).toMatchSnapshot();
+  });
 });
 
 /**

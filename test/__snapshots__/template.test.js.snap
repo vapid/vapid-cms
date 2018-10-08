@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`#parse parses conditionals 1`] = `
+Object {
+  "general": Object {
+    "fields": Object {},
+    "keyword": undefined,
+    "name": "general",
+    "params": Object {},
+  },
+}
+`;
+
+exports[`#parse parses conditionals 2`] = `
+Object {
+  "general": Object {
+    "fields": Object {
+      "foo": Object {
+        "name": "foo",
+        "params": Object {},
+      },
+    },
+    "keyword": undefined,
+    "name": "general",
+    "params": Object {},
+  },
+}
+`;
+
 exports[`#parse parses order by clause 1`] = `
 Object {
   "general": Object {
