@@ -1,0 +1,47 @@
+@import "../../../node_modules/quill/dist/quill.snow";
+
+.wysiwyg {
+  cursor: text;
+}
+
+.ql-snow {
+  a {
+    color: #4A0C80;
+  }
+
+  .ql-editor {
+    p,
+    ol, ul,
+    blockquote,
+    pre,
+    h1, h2, h3, 
+    h4, h5, h6 {
+      margin: 1.5rem 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.ql-snow.ql-toolbar {
+  button,
+  .ql-picker-item,
+  .ql-picker-label {
+    outline: none;
+
+    &:hover,
+    &.ql-active {
+      color: $purple;
+
+      .ql-stroke {
+        stroke: $purple;
+      }
+
+      .ql-fill {
+        fill: $purple;
+      }
+    }
+  }
+}

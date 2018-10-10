@@ -1,5 +1,3 @@
-@import "../../../node_modules/quill/dist/quill.snow";
-
 @import "variables";
 @import "mixins";
 @import "animations";
@@ -12,6 +10,7 @@
 @import "tables";
 @import "navbar";
 @import "sidebar";
+@import "wysiwyg";
 @import "main";
 @import "footer";
 

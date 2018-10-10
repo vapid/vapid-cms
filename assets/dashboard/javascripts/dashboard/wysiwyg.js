@@ -3,11 +3,14 @@ const Quill = require('quill');
 const options = {
   modules: {
     toolbar: [
-      [{ header: [1, 2, false] }],
+      [{ header: [2, 3, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       ['link', 'blockquote', 'code-block'],
       [{ list: 'ordered' }, { list: 'bullet' }],
     ],
+    clipboard: {
+      matchVisual: false,
+    }
   },
   theme: 'snow',
 };
@@ -20,7 +23,14 @@ document.addEventListener("turbolinks:load", () => {
     const input = editor.nextElementSibling;
 
     quill.on('text-change', (delta, oldDelta, source) => {
-      input.value = editor.firstChild.innerHTML;
+      const content = editor.firstChild.innerHTML
+      input.value = content.replace(/^<p><br><\/p>/, '');
     });
+
+    editor.addEventListener('click', (e) => {
+      if (editor === e.target) {
+        quill.setSelection(quill.getLength());
+      }
+    }, false);
   });
 });
