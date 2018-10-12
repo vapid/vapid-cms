@@ -1,4 +1,4 @@
-<form class="form" action="https://formspree.io/<%- recipient %>" method="post">
+<form class="form" action="<%- action %>" method="post">
   <% for (let fieldName in fields) { %>
     <%- Form.field(fieldName, fieldName, fields[fieldName]) %>
   <% } %>
