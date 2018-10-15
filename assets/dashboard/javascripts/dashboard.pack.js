@@ -13,6 +13,7 @@ require('./dashboard/autosave');
 require('./dashboard/hideMessage');
 require('./dashboard/range');
 require('./dashboard/semantic');
+require('./dashboard/multipleInput');
 require('./dashboard/sidebar');
 require('./dashboard/sortable');
 require('./dashboard/websocket');
