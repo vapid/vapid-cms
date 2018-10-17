@@ -30,3 +30,15 @@ describe('.copyTo', () => {
     expect(copyAgain).toThrowErrorMatchingSnapshot();
   });
 });
+
+describe('.copyEnv', () => {
+  test('generates a secret key', () => {
+    target = tmp.tmpNameSync();
+    Generator.copyEnv(target);
+
+    const env = fs.readFileSync(join(target, '.env'), 'utf-8');
+    expect(env).toMatch(/SECRET_KEY=[a-f0-9]{128}/);
+
+    Utils.removeFiles(target);
+  });
+});
