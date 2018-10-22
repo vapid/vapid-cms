@@ -41,6 +41,18 @@ describe('#render', () => {
     expect(directive.render('test.jpg')).toEqual('/uploads/test.jpg');
   });
 
+  test('accepts a width option', () => {
+    const directive = new ImageDirective({ width: 100 });
+    expect(directive.render('test.jpg')).toMatch(/width="100"/);
+    expect(directive.render('test.jpg')).toMatch(/test\.jpg\?w=100/);
+  });
+
+  test('accepts a height option', () => {
+    const directive = new ImageDirective({ height: 100 });
+    expect(directive.render('test.jpg')).toMatch(/height="100"/);
+    expect(directive.render('test.jpg')).toMatch(/test\.jpg\?h=100/);
+  });
+
   test('accepts a class option', () => {
     const directive = new ImageDirective({ class: 'test' });
     expect(directive.render('test.jpg')).toMatch(/class="test"/);
