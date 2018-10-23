@@ -36,7 +36,7 @@ File/Folder | Description
 www | Your website files. Anything you put in here is an accessible resource, with the exceptions of files that start with underscores or periods—those are private/special. Sass and JS files that have the `.pack.js`, `.pack.scss`, or `.pack.sass` extensions will be compiled by Webpack.
 data | SQLite database file, and uploaded images. In general, you do not want to mess with this folder.
 node_modules | This one should also be ignored.
-package_json | Information about your project, including Vapid configuration options.
+package.json | Information about your project, including Vapid configuration options.
 .env | A private file that contains server environment variables, like the SECRET_KEY used by the web server.
 
 ## Deploying
