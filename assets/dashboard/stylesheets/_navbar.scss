@@ -163,7 +163,7 @@
     }
 
     &.build {
-      @extend .button.orange;
+      @extend .orange;
 
       &:hover {
         opacity: 1;
