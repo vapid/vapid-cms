@@ -2,4 +2,4 @@
 
 exports[`#render displays an <a> tag if an omebed is not found 1`] = `"<a href=\\"http://example.com\\">http://example.com</a>"`;
 
-exports[`#render renders an oembed if unfurl=true 1`] = `"<iframe width=\\"459\\" height=\\"344\\" src=\\"https://www.youtube.com/embed/FtX8nswnUKU?feature=oembed\\" frameborder=\\"0\\" allow=\\"autoplay; encrypted-media\\" allowfullscreen></iframe>"`;
+exports[`#render renders an oembed if unfurl=true 1`] = `"<iframe width=\\"459\\" height=\\"344\\" src=\\"https://www.youtube.com/embed/FtX8nswnUKU?feature=oembed\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen></iframe>"`;
