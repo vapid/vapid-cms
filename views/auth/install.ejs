@@ -3,13 +3,13 @@
     <p>Before we get started, let's create a dashboard login account for you.</p>
   </div>
   <div class="field">
-    <label class="hidden">Email</label>
-    <input type="text" name="email" placeholder="Email" value="<%- email %>" autocapitalize="none" autofocus>
+    <label for="email" class="hidden">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="Email" value="<%- email %>" autocapitalize="none" autofocus required>
   </div>
   <div class="field">
-    <label class="hidden">Password</label>
-    <input type="password" name="password" placeholder="Password">
-    <small class="requirement">(min. 6 characters long)</small>
+    <label for="password" class="hidden">Password</label>
+    <input type="password" id="password" name="password" placeholder="Password" required aria-describedby="passwordHint">
+    <small id="passwordHint" class="requirement">(Must be at least 6 characters)</small>
   </div>
 
   <div class="field">
