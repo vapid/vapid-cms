@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+const path = require('path');
+
 const program = require('commander');
 const inquirer = require('inquirer');
 const updateNotifier = require('update-notifier');
@@ -8,13 +10,14 @@ const services = require('../lib/services');
 const Deployer = require('../lib/deployer');
 const Generator = require('../lib/generator');
 const Logger = require('../lib/logger');
-const Vapid = require('../lib/vapid');
+const VapidServer = require('../lib/VapidServer');
+const VapidBuilder = require('../lib/VapidBuilder');
 
 function withVapid(command) {
   return async (target) => {
     try {
       const cwd = target instanceof program.Command ? process.cwd() : target;
-      const vapid = new Vapid(cwd);
+      const vapid = new VapidServer(cwd);
 
       updateNotifier({ pkg }).notify({ isGlobal: true });
       await command(vapid);
@@ -140,6 +143,21 @@ program
  */
 program
   .version(`Vapid ${pkg.version}`, '-v, --version');
+
+
+/**
+ * version - prints the current Vapid version number
+ */
+program
+  .command('build')
+  .description('generate a static build of the site')
+  .action(async (target, dest) => {
+    const cwd = target instanceof program.Command ? process.cwd() : target;
+    const destDir = dest instanceof program.Command ? path.join(process.cwd(), 'dist') : dest;
+    const vapid = new VapidBuilder(cwd);
+    await vapid.build(destDir);
+    process.exit(0);
+  });
 
 /**
  * catch all command - shows the help text
