@@ -125,6 +125,7 @@ exports[`.fromFile reads partials from disk 1`] = `
   Hello, .
 
   I'm a partial. 
+  I'm a subdirectory partial. 
 </body>
 </html>"
 `;

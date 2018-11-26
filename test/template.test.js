@@ -38,9 +38,13 @@ describe('.fromFile', () => {
   });
 
   test('reads partials from disk', () => {
-    const filePath = resolve(__dirname, 'fixtures/with_partial.html');
-    const partials = [resolve(__dirname, 'fixtures', '_partial.html')];
-    const template = Template.fromFile(filePath, partials);
+    const basePath = resolve(__dirname, 'fixtures');
+    const filePath = resolve(basePath, 'with_partials.html');
+    const partials = [
+      resolve(basePath, '_partial.html'),
+      resolve(basePath, 'subdirectory/_partial.html'),
+    ];
+    const template = Template.fromFile(filePath, basePath, partials);
 
     expect(template.render()).toMatchSnapshot();
   });
