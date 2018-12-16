@@ -1,6 +1,10 @@
-const middleware = require('../lib/middleware');
 const supertest = require('supertest');
 const Koa = require('koa');
+const tmp = require('tmp');
+const { resolve } = require('path');
+const imageSize = require('image-size');
+const middleware = require('../lib/middleware');
+const Utils = require('../lib/utils');
 
 let app;
 let server;
@@ -28,6 +32,70 @@ describe('assets', () => {
  */
 describe('favicon', () => {
   test.skip();
+});
+
+/**
+ * IMAGE PROCESSING
+ */
+describe('image processing', () => {
+  const tmpDir = tmp.tmpNameSync();
+  const paths = {
+    cache: tmpDir,
+    www: resolve(__dirname, 'fixtures/site/www'),
+  };
+
+  beforeEach(() => {
+    app.use(middleware.imageProcessing(paths));
+  });
+
+  afterAll(() => {
+    Utils.removeFiles(tmpDir);
+  });
+
+  // TODO: Is there a better way to test next() being called than 404?
+  it('only processes JPG/PNG/WEBP with a width/height param', (done) => {
+    request.get('/images/test.jpg')
+      .expect(404, done);
+
+    request.get('/images/test.gif')
+      .expect(404, done);
+
+    ['jpg', 'png', 'webp'].forEach((ext) => {
+      request.get(`/images/test.${ext}?w=400`)
+        .expect(200, done);
+    });
+  });
+
+  it('resizes images that have width or height set', (done) => {
+    request.get('/images/test.jpg?w=400')
+      .expect('Content-Type', 'image/jpeg')
+      .expect((response) => {
+        const dimensions = imageSize(response.body);
+        expect(dimensions.width).toEqual(400);
+        expect(dimensions.height).toEqual(300);
+      })
+      .expect(200, done);
+
+    request.get('/images/test.png?h=150')
+      .expect('Content-Type', 'image/png')
+      .expect((response) => {
+        const dimensions = imageSize(response.body);
+        expect(dimensions.width).toEqual(200);
+        expect(dimensions.height).toEqual(150);
+      })
+      .expect(200, done);
+  });
+
+  it('crops images that have width and height set', (done) => {
+    request.get('/images/test.webp?w=200&h=200')
+      .expect('Content-Type', 'image/webp')
+      .expect((response) => {
+        const dimensions = imageSize(response.body);
+        expect(dimensions.width).toEqual(200);
+        expect(dimensions.height).toEqual(200);
+      })
+      .expect(200, done);
+  });
 });
 
 /**
