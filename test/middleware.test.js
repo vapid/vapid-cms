@@ -1,7 +1,9 @@
+const crypto = require('crypto');
 const supertest = require('supertest');
 const Koa = require('koa');
 const tmp = require('tmp');
-const { resolve } = require('path');
+const { existsSync, statSync } = require('fs');
+const { join, resolve } = require('path');
 const imageSize = require('image-size');
 const middleware = require('../lib/middleware');
 const Utils = require('../lib/utils');
@@ -38,7 +40,7 @@ describe('favicon', () => {
  * IMAGE PROCESSING
  */
 describe('image processing', () => {
-  const tmpDir = tmp.tmpNameSync();
+  const tmpDir = tmp.dirSync().name;
   const paths = {
     cache: tmpDir,
     www: resolve(__dirname, 'fixtures/site/www'),
@@ -69,32 +71,47 @@ describe('image processing', () => {
   it('resizes images that have width or height set', (done) => {
     request.get('/images/test.jpg?w=400')
       .expect('Content-Type', 'image/jpeg')
-      .expect((response) => {
+      .then((response) => {
         const dimensions = imageSize(response.body);
         expect(dimensions.width).toEqual(400);
         expect(dimensions.height).toEqual(300);
       })
-      .expect(200, done);
+      .then(done);
 
     request.get('/images/test.png?h=150')
       .expect('Content-Type', 'image/png')
-      .expect((response) => {
+      .then((response) => {
         const dimensions = imageSize(response.body);
         expect(dimensions.width).toEqual(200);
         expect(dimensions.height).toEqual(150);
       })
-      .expect(200, done);
+      .then(done);
   });
 
   it('crops images that have width and height set', (done) => {
     request.get('/images/test.webp?w=200&h=200')
       .expect('Content-Type', 'image/webp')
-      .expect((response) => {
+      .then((response) => {
         const dimensions = imageSize(response.body);
         expect(dimensions.width).toEqual(200);
         expect(dimensions.height).toEqual(200);
       })
-      .expect(200, done);
+      .then(done);
+  });
+
+  it('caches resized images', (done) => {
+    const url = '/images/test.jpg?w=600';
+    request.get(url)
+      .then(() => {
+        const filePath = join(paths.www, url.split('?')[0]);
+        const fileStats = statSync(filePath);
+        const cacheKey = crypto.createHash('md5')
+          .update(`${url}${fileStats.mtime}`)
+          .digest('hex');
+        const cachePath = join(paths.cache, `${cacheKey}.jpg`);
+        expect(existsSync(cachePath)).toBeTruthy();
+        done();
+      });
   });
 });
 
