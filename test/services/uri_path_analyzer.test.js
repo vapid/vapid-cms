@@ -44,5 +44,9 @@ describe('#perform', () => {
     results = new UriPathAnalyzer('/offices/123', templateDir).perform();
     expect(results[1]).toEqual('offices');
     expect(results[2]).toEqual('123');
+
+    // Invalid
+    results = new UriPathAnalyzer('/offices', templateDir).perform();
+    expect(results[0]).toBeNull();
   });
 });
