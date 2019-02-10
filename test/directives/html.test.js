@@ -7,6 +7,10 @@ describe('.constructor', () => {
   test('sets editor=wysiwyg by default', () => {
     expect(vanilla.options.editor).toEqual('wysiwyg');
   });
+
+  test('sets images=false by default', () => {
+    expect(vanilla.options.images).toEqual(false);
+  });
 });
 
 describe('#input', () => {
@@ -17,6 +21,16 @@ describe('#input', () => {
   test('renders ACE editor if editor=false', () => {
     const directive = new HTMLDirective({ editor: false });
     expect(directive.input()).toMatch(/ace_editor/);
+  });
+
+  test('renders data-images attribute for WYSIWYG', () => {
+    expect(vanilla.input()).toMatch(/data-images="false"/);
+
+    let directive = new HTMLDirective({ images: true });
+    expect(directive.input()).toMatch(/data-images="true"/);
+
+    directive = new HTMLDirective({ editor: 'markdown', images: true });
+    expect(directive.input()).not.toMatch(/data-images/);
   });
 });
 

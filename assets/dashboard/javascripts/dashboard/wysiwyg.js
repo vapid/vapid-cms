@@ -21,7 +21,7 @@ class Linebreak extends Break {
 Linebreak.blotName = 'linebreak';
 Linebreak.tagName = 'BR';
 
-Quill.register(Linebreak)
+Quill.register(Linebreak);
 
 const options = {
   modules: {
@@ -65,6 +65,9 @@ document.addEventListener("turbolinks:load", () => {
   const editors = document.querySelectorAll('.wysiwyg');
 
   [].forEach.call(editors, (editor) => {
+    options.modules.toolbar[4] = editor.getAttribute('data-images') === "true" ?
+      ['image'] : [];
+
     const quill = new Quill(editor, options);
     const input = editor.nextElementSibling;
 
