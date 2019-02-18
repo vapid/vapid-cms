@@ -17,7 +17,6 @@
   cursor: pointer;
   position: relative;
   display: inline-block;
-  outline: none;
   text-align: left;
   -webkit-transition: width 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: width 0.1s ease, -webkit-box-shadow 0.1s ease;
@@ -40,7 +39,6 @@
   cursor: auto;
   position: absolute;
   display: none;
-  outline: none;
   top: 100%;
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
@@ -421,7 +419,6 @@ select.ui.dropdown {
   -webkit-overflow-scrolling: touch;
   border-top-width: 0px !important;
   width: auto;
-  outline: none;
   margin: 0px -1px;
   min-width: calc(100% +  2px );
   width: calc(100% +  2px );
@@ -571,7 +568,6 @@ select.ui.dropdown {
   top: 0em;
   left: 1px;
   width: 100%;
-  outline: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   padding: inherit;
 }

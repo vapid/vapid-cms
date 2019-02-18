@@ -33,7 +33,6 @@
   box-sizing: border-box;
   line-height: 1.42;
   height: 100%;
-  outline: none;
   overflow-y: auto;
   padding: 12px 15px;
   tab-size: 4;
@@ -417,10 +416,7 @@
   float: left;
   height: 100%;
 }
-.ql-snow.ql-toolbar button:active:hover,
-.ql-snow .ql-toolbar button:active:hover {
-  outline: none;
-}
+
 .ql-snow.ql-toolbar input.ql-image[type=file],
 .ql-snow .ql-toolbar input.ql-image[type=file] {
   display: none;

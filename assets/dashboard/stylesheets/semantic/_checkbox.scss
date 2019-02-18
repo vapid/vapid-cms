@@ -23,7 +23,6 @@
   display: inline-block;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  outline: none;
   vertical-align: baseline;
   font-style: normal;
   min-height: 17px;
@@ -40,7 +39,6 @@
   top: 0px;
   left: 0px;
   opacity: 0 !important;
-  outline: none;
   z-index: 3;
   width: 17px;
   height: 17px;
@@ -56,7 +54,6 @@
   position: relative;
   display: block;
   padding-left: 1.85714em;
-  outline: none;
   font-size: 1em;
   font-weight: normal;
 }
