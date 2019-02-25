@@ -10,6 +10,7 @@ require('../vendor/jquery.tablesort');
 
 require('./dashboard/ace');
 require('./dashboard/autosave');
+require('./dashboard/datepicker');
 require('./dashboard/hideMessage');
 require('./dashboard/range');
 require('./dashboard/semantic');
