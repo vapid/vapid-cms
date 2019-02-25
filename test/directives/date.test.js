@@ -2,7 +2,7 @@ const BaseDirective = require('../../lib/directives/base');
 const DateDirective = require('../../lib/directives/date')(BaseDirective);
 
 const vanilla = new DateDirective();
-const date = '2015-10-21T00:04:29.000Z';
+const date = '2015-10-21';
 
 describe('#input', () => {
   test('renders a date input by default', () => {
@@ -13,6 +13,11 @@ describe('#input', () => {
     const directive = new DateDirective({ time: true });
     expect(directive.input('test')).toMatch(/input type="datetime-local"/);
   });
+
+  test('sets the default value to an empty string', () => {
+    const directive = new DateDirective();
+    expect(directive.input('test')).toMatch(/value=""/);
+  });
 });
 
 describe('#render', () => {
@@ -21,7 +26,7 @@ describe('#render', () => {
   });
 
   test('override date format', () => {
-    const directive = new DateDirective({ format: '%Y-%m-%d' });
-    expect(directive.render(date)).toEqual('2015-10-21');
+    const directive = new DateDirective({ format: '%D' });
+    expect(directive.render(date)).toEqual('10/21/15');
   });
 });
