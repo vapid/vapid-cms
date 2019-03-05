@@ -375,6 +375,13 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
 
+animated-gif-detector@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/animated-gif-detector/-/animated-gif-detector-1.2.0.tgz#cb2f9911ca8024f2b34c693b7fd64542ee416189"
+  integrity sha1-yy+ZEcqAJPKzTGk7f9ZFQu5BYYk=
+  dependencies:
+    inherits "^2.0.1"
+
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
