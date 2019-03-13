@@ -7,6 +7,7 @@ document.addEventListener("turbolinks:load", () => {
     const $textarea = $editor.next('textarea');
     const editor = ace.edit(this);
 
+    editor.getSession().setUseWrapMode(true);
     editor.getSession().setValue($textarea.val());
 
     editor.getSession().on('change', () => {
