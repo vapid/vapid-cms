@@ -1,7 +1,7 @@
 const liveReload = document.querySelector('meta[name=livereload]');
 
 if ('WebSocket' in window && liveReload) {
-  const ws = new WebSocket(`ws://${location.host}/livereload`);
+  const ws = (window.location.protocol == 'https:')? new WebSocket(`wss://${location.host}/livereload`) : new WebSocket(`ws://${location.host}/livereload`) ;
 
   document.addEventListener("turbolinks:load", () => {
     const $build = $('.build.button');
