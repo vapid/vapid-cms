@@ -1,6 +1,6 @@
 <% if (section.hasFields) { %>
 <form class="form" action="<%- action %>" method="post" enctype="multipart/form-data" data-autosave="true" novalidate>
-  <% for (let fieldName in section.fields) { %>
+  <% for (const { _name: fieldName } of section.sortedFields) { %>
     <%- Form.field(`content[${fieldName}]`, fieldName, section.fields[fieldName], record.content[fieldName], errors.hasOwnProperty(fieldName) && errors[fieldName]) %>
   <% } %>
 
