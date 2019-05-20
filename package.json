@@ -34,11 +34,11 @@
     ]
   },
   "dependencies": {
+    "@hapi/boom": "^7.4.2",
     "ace-builds": "^1.4.3",
     "animated-gif-detector": "^1.2.0",
     "aws4": "^1.7.0",
     "bcrypt": "^3.0.3",
-    "@hapi/boom": "^7.2.0",
     "colors": "^1.1.2",
     "commander": "^2.12.2",
     "css-loader": "^0.28.11",
