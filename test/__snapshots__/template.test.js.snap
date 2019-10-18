@@ -16,8 +16,11 @@ Object {
   "general": Object {
     "fields": Object {
       "foo": Object {
-        "name": "foo",
+        "context": null,
+        "key": "foo",
         "params": Object {},
+        "path": "foo",
+        "remainder": "",
       },
     },
     "keyword": undefined,
@@ -51,10 +54,13 @@ Object {
   "general": Object {
     "fields": Object {
       "test placeholder=\\"Testing \\\\\\"quotes\\\\\\" in the middle.\\"": Object {
-        "name": "test",
+        "context": null,
+        "key": "test",
         "params": Object {
           "placeholder": "Testing \\"quotes\\" in the middle.",
         },
+        "path": "test",
+        "remainder": "placeholder=\\"Testing \\\\\\"quotes\\\\\\" in the middle.\\"",
       },
     },
     "keyword": undefined,
@@ -69,10 +75,13 @@ Object {
   "general": Object {
     "fields": Object {
       "test placeholder=\\"If this'll work\\"": Object {
-        "name": "test",
+        "context": null,
+        "key": "test",
         "params": Object {
           "placeholder": "If this'll work",
         },
+        "path": "test",
+        "remainder": "placeholder=\\"If this'll work\\"",
       },
     },
     "keyword": undefined,
@@ -87,8 +96,11 @@ Object {
   "general": Object {
     "fields": Object {
       "name": Object {
-        "name": "name",
+        "context": null,
+        "key": "name",
         "params": Object {},
+        "path": "name",
+        "remainder": "",
       },
     },
     "keyword": undefined,
@@ -98,12 +110,18 @@ Object {
   "section about": Object {
     "fields": Object {
       "bio": Object {
-        "name": "bio",
+        "context": null,
+        "key": "bio",
         "params": Object {},
+        "path": "bio",
+        "remainder": "",
       },
       "name": Object {
-        "name": "name",
+        "context": null,
+        "key": "name",
         "params": Object {},
+        "path": "name",
+        "remainder": "",
       },
     },
     "keyword": "section",
@@ -111,6 +129,12 @@ Object {
     "params": Object {},
   },
 }
+`;
+
+exports[`#render replaces general references in sections with content 1`] = `
+"      Hello General
+      Hello Section
+    "
 `;
 
 exports[`#render replaces tags with content 1`] = `"Hello, World."`;

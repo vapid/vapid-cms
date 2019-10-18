@@ -9,9 +9,9 @@ const pkg = require('../package.json');
 const services = require('../lib/services');
 const Deployer = require('../lib/deployer');
 const Generator = require('../lib/generator');
-const Logger = require('../lib/logger');
-const VapidServer = require('../lib/VapidServer');
-const VapidBuilder = require('../lib/VapidBuilder');
+const { Logger } = require('../lib/utils');
+const VapidServer = require('../lib/runners/VapidServer');
+const VapidBuilder = require('../lib/runners/VapidBuilder');
 
 function withVapid(command) {
   return async (target) => {
@@ -152,8 +152,8 @@ program
   .command('build')
   .description('generate a static build of the site')
   .action(async (target, dest) => {
-    const cwd = target instanceof program.Command ? process.cwd() : target;
-    const destDir = dest instanceof program.Command ? path.join(process.cwd(), 'dist') : dest;
+    const cwd = typeof target !== 'string' ? process.cwd() : target;
+    const destDir = typeof dist !== 'string' ? path.join(process.cwd(), 'dist') : dest;
     const vapid = new VapidBuilder(cwd);
     await vapid.build(destDir);
     process.exit(0);

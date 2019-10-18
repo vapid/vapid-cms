@@ -1,6 +1,6 @@
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
-const Template = require('../lib/template');
+const Template = require('../lib/Template');
 
 /**
  * Constructor
@@ -79,8 +79,8 @@ describe('#parse', () => {
     const single = new Template(`{{test required='false'}}`).parse();
     const double = new Template('{{test required="false"}}').parse();
 
-    expect(plain.general.fields['test required=false']).toEqual(single.general.fields[`test required='false'`]);
-    expect(plain.general.fields['test required=false']).toEqual(double.general.fields['test required="false"']);
+    expect(plain.general.fields['test required=false'].params).toEqual(single.general.fields[`test required='false'`].params);
+    expect(plain.general.fields['test required=false'].params).toEqual(double.general.fields['test required="false"'].params);
   });
 
   test('parses parameters with escaped quotes', () => {
@@ -103,6 +103,17 @@ describe('#parse', () => {
     expect(new Template(conditional).parse()).toMatchSnapshot();
     expect(new Template(conditional, {}, { parseConditionals: true }).parse()).toMatchSnapshot();
   });
+
+  test('parses general references in sections correctly', () => {
+    const template = new Template(`
+      {{test}}
+      {{#section child}}{{general.test}}{{/section}}
+    `).parse();
+
+    expect(Object.keys(template.general.fields)).toEqual(['test']);
+    expect(Object.keys(template['section child'].fields)).toEqual(['general.test']);
+  });
+
 });
 
 /**
@@ -112,6 +123,23 @@ describe('#render', () => {
   test('replaces tags with content', () => {
     const template = new Template('Hello, {{name}}.');
     const rendered = template.render({ general: { name: 'World' } });
+
+    expect(rendered).toMatchSnapshot();
+  });
+
+  test('replaces general references in sections with content', () => {
+    const template = new Template(`
+      {{greeting}} General
+      {{#section child}}{{general.greeting}} Section{{/section}}
+    `);
+    const rendered = template.render({
+      general: {
+        greeting: 'Hello',
+      },
+      'section child': {
+        ['general.greeting']: 'Hello',
+      },
+    });
 
     expect(rendered).toMatchSnapshot();
   });
