@@ -101,7 +101,11 @@ describe('#parse', () => {
     const conditional = '{{#if foo}}Foo{{/if}}';
 
     expect(new TemplateCompiler(conditional).parse()).toMatchSnapshot();
-    expect(new TemplateCompiler(conditional, {}, { parseConditionals: true }).parse()).toMatchSnapshot();
+    expect(new TemplateCompiler(
+      conditional,
+      {},
+      { parseConditionals: true },
+    ).parse()).toMatchSnapshot();
   });
 
   test('parses general references in sections correctly', () => {
