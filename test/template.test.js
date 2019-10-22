@@ -113,7 +113,6 @@ describe('#parse', () => {
     expect(Object.keys(template.general.fields)).toEqual(['test']);
     expect(Object.keys(template['section child'].fields)).toEqual(['general.test']);
   });
-
 });
 
 /**
@@ -137,7 +136,7 @@ describe('#render', () => {
         greeting: 'Hello',
       },
       'section child': {
-        ['general.greeting']: 'Hello',
+        'general.greeting': 'Hello',
       },
     });
 

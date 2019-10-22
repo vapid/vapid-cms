@@ -1,4 +1,4 @@
-const recursive = require("recursive-readdir");
+const recursive = require('recursive-readdir');
 const { resolve, relative } = require('path');
 const tmp = require('tmp');
 
@@ -8,7 +8,6 @@ const { Utils } = require('../lib/utils');
 const templatesDir = resolve(__dirname, 'fixtures', 'site');
 
 describe('VapidBuilder', () => {
-
   test('builds a static site when pointed at a site directory', async () => {
     const inputDir = tmp.tmpNameSync();
     Utils.copyFiles(templatesDir, inputDir);
@@ -37,5 +36,4 @@ describe('VapidBuilder', () => {
     Utils.removeFiles(inputDir);
     Utils.removeFiles(outputDir);
   });
-
 });
