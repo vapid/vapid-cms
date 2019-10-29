@@ -104,7 +104,6 @@ describe('#parse', () => {
     expect(new TemplateCompiler(
       conditional,
       {},
-      { parseConditionals: true },
     ).parse()).toMatchSnapshot();
   });
 

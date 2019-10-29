@@ -3,7 +3,15 @@
 exports[`#parse parses conditionals 1`] = `
 Object {
   "general": Object {
-    "fields": Object {},
+    "fields": Object {
+      "foo": Object {
+        "context": null,
+        "key": "foo",
+        "params": Object {},
+        "path": "foo",
+        "remainder": "",
+      },
+    },
     "keyword": undefined,
     "name": "general",
     "params": Object {},
