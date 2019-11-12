@@ -78,7 +78,7 @@ program
 program
   .command('deploy')
   .description('deploy to Vapid\'s hosting service')
-  .action(async (target, dest) => {
+  .action(async (target) => {
     const cwd = typeof target !== 'string' ? process.cwd() : target;
     const vapid = new VapidDeployer(cwd);
     await vapid.deploy();
