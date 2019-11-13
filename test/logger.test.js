@@ -1,4 +1,4 @@
-const Logger = require('../lib/logger');
+const { Logger } = require('../lib/utils');
 
 let output;
 

@@ -1,11 +1,11 @@
 const crypto = require('crypto');
+const middleware = require('../lib/runners/VapidServer/middleware');
 const supertest = require('supertest');
 const Koa = require('koa');
 const tmp = require('tmp');
 const { existsSync, statSync } = require('fs');
 const { join, resolve } = require('path');
 const imageSize = require('image-size');
-const middleware = require('../lib/middleware');
 const Utils = require('../lib/utils');
 
 let app;

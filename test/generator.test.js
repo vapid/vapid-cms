@@ -3,7 +3,7 @@ const tmp = require('tmp');
 const { join } = require('path');
 
 const Generator = require('../lib/generator');
-const Utils = require('../lib/utils');
+const { Utils } = require('../lib/utils');
 
 let target;
 

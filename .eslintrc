@@ -3,7 +3,10 @@
   "plugins": ["jest"],
   "rules": {
     "no-underscore-dangle": "off",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "no-continue": "off",
+    "no-restricted-syntax": ["off", "ForOfLoop"],
+    "no-restricted-globals": ["off", "isNaN"]
   },
   "env": {
     "jest/globals": true
