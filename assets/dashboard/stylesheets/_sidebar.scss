@@ -63,5 +63,132 @@
         }
       }
     }
+
+    &.sortable a:not(:empty)::before {
+      content: ".. .. ..";
+      width: 10px;
+      height: 20px;
+      display: inline-block;
+      overflow: hidden;
+      line-height: 5px;
+      padding: 3px 4px;
+      cursor: move;
+      vertical-align: middle;
+      margin-top: -0.7em;
+      margin-right: 0.3em;
+      font-size: 12px;
+      font-family: sans-serif;
+      letter-spacing: 2px;
+      color: currentColor;
+      font-weight: bold;
+      position: absolute;
+      left: 6px;
+      top: 17px;
+      width: 11px;
+      height: 18px;
+      line-height: 4px;
+      padding: 0;
+    }
   }
+}
+
+.sidebar__add-page {
+  width: calc(100% - 4rem);
+  margin: 1.2rem 2rem 0 2rem;
+  font-weight: 600;
+  color: #979797;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  line-height: 3.4rem;
+  cursor: pointer;
+  transition: color .28s;
+  outline: none;
+}
+
+.sidebar__add-page:hover, .sidebar__add-page:focus {
+  color: black;
+}
+
+.sidebar__divider {
+  margin: 0.8rem 0 0 0;
+  overflow: visible;
+  border-width: 1px 0;
+  border-color: transparent;
+  text-align: left;
+}
+
+.menu.sortable {
+  position: relative;
+  margin-top: 2.4rem;
+}
+
+.menu.sortable a {
+  background: rgba(0,0,0,.05);
+}
+
+.menu.sortable hr ~ a {
+  background: transparent;
+}
+
+.menu.sortable hr:first-child {
+  margin-top: 5.4rem;
+}
+
+.menu.sortable hr:first-child::before {
+  content: 'No Site Navigation';
+  line-height: 5.4rem;
+  text-align: center;
+  height: 5.4rem;
+  top: -5.5rem;
+  color: rgba(0,0,0,.25);
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-radius: 4px 0 0 4px;
+  padding: 0;
+}
+
+.menu.sortable hr:last-child::after {
+  content: 'No Other Pages';
+  line-height: 3.6rem;
+  text-align: center;
+  height: 3.6rem;
+  color: rgba(0,0,0,.25);
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0;
+  width: 100%;
+}
+
+hr.sidebar__divider::before {
+  content: "Site Navigation";
+  position: absolute;
+  top: -2.4rem;
+  left: 0;
+  padding-left: 2rem;
+  width: 100%;
+  padding-right: 0.4rem;
+  font-size: 11px;
+  color: black;
+  background: rgba(0, 0, 0, 0.05);
+  height: 2.4rem;
+  line-height: 2.8rem;
+  font-weight: 600;
+  border-radius: 4px 0 0 0;
+}
+
+hr.sidebar__divider::after {
+  content: 'Other Pages';
+  left: -2rem;
+  padding-left: 2rem;
+  margin-top: 0.8rem;
+  width: 100%;
+  padding-right: 0.4rem;
+  font-size: 11px;
+  color: black;
+  line-height: 2rem;
+  height: 2rem;
+  font-weight: 600;
+  display: block;
 }

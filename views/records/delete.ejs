@@ -1,15 +1,15 @@
 <h1 class="heading">
   <%- include('../toggle') %>
-  Delete <%- record.section.labelSingular %>
+  Delete <%- record.template.labelSingular %>
 </h1>
 
 <section class="section">
   <div class="content">
-    <p>Are you sure you'd like to delete this <%- record.section.labelSingular.toLowerCase() %>?</p>
+    <p>Are you sure you'd like to delete this <%- record.template.labelSingular.toLowerCase() %>?</p>
 
     <table class="table">
       <tbody>
-        <% record.section.tableColumns.forEach(key => { %>
+        <% record.template.tableColumns.forEach(key => { %>
         <tr>
           <td><%- key %></td>
           <td><%- record.content[key.toLowerCase()] %></td>

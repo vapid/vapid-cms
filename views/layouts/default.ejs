@@ -35,13 +35,36 @@
     <div class="left rail">
       <nav class="sidebar">
         <div>
-          <% if (contentSections.length) { %>
+
+            <% if (pages.length) { %>
+            <div class="item">
+              <div class="header">Pages</div>
+              <div class="menu sortable">
+                <% pages.forEach(s => { if (!s.navigation) { return; }%>
+                <a href="/dashboard/pages/<%- s.slug %>/" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
+                  <%- include(`../../assets/dashboard/images/page.svg`) %>
+                  <%- s.title %>
+                </a>
+                <% }) %>
+                <hr class="sidebar__divider" />
+                <% pages.forEach(s => { if (s.navigation) { return; } %>
+                  <a href="/dashboard/pages/<%- s.slug %>/" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
+                    <%- include(`../../assets/dashboard/images/page.svg`) %>
+                    <%- s.title %>
+                  </a>
+                <% }) %>
+              </div>
+              <button class="sidebar__add-page">Add a Page</button>
+            </div>
+            <% } %>
+
+          <% if (collections.length) { %>
           <div class="item">
-            <div class="header">Content</div>
+            <div class="header">Collections</div>
             <div class="menu">
-              <% contentSections.forEach(s => { %>
-                <a href="/dashboard/sections/<%- s.id %>/" class="<% if (typeof section !== 'undefined' && s.id == section.id) { %>active <% } %>item">
-                  <%- include(`../../assets/dashboard/images/${s.multiple ? 'multiple' : 'single'}.svg`) %>
+              <% collections.forEach(s => { %>
+                <a href="/dashboard/collections/<%- s.name %>/" class="<% if (typeof template !== 'undefined' && s.id == template.id) { %>active <% } %>item">
+                  <%- include(`../../assets/dashboard/images/collection.svg`) %>
                   <%- s.label %>
                 </a>
               <% }) %>
@@ -49,12 +72,12 @@
           </div>
           <% } %>
 
-          <% if (formSections.length) { %>
+          <% if (forms.length) { %>
           <div class="item">
             <div class="header">Forms</div>
             <div class="menu">
-              <% formSections.forEach(s => { %>
-                <a href="/dashboard/sections/<%- s.id %>" class="<% if (typeof section !== 'undefined' && s.id == section.id) { %>active <% } %>item">
+              <% forms.forEach(s => { %>
+                <a href="/dashboard/forms/<%- s.name %>" class="<% if (typeof template !== 'undefined' && s.id == template.id) { %>active <% } %>item">
                   <%- include('../../assets/dashboard/images/form.svg') %>
                   <%- s.label %>
                 </a>
@@ -62,6 +85,21 @@
             </div>
           </div>
           <% } %>
+
+          <% if (settings.length) { %>
+          <div class="item">
+            <div class="header">Settings</div>
+            <div class="menu">
+              <% settings.forEach(s => { %>
+                <a href="/dashboard/settings/<%- s.name %>/" class="<% if (typeof template !== 'undefined' && s.id == template.id) { %>active <% } %>item">
+                  <%- include(`../../assets/dashboard/images/settings.svg`) %>
+                  <%- s.label %>
+                </a>
+              <% }) %>
+            </div>
+          </div>
+          <% } %>
+
         </div>
 
         <div></div>

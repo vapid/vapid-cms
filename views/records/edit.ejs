@@ -6,17 +6,17 @@
 <section class="section">
   <div class="content">
     <form class="form" action="<%- action %>" method="post" enctype="multipart/form-data" data-autosave="true" novalidate>
-      <% for (const { _name: fieldName } of record.section.sortedFields) { %>
-        <%- Form.field(`content[${fieldName}]`, fieldName, section.fields[fieldName], record.content[fieldName], errors.hasOwnProperty(fieldName) && errors[fieldName]) %>
+      <% for (const { _name: fieldName } of record.template.sortedFields) { %>
+        <%- Form.field(`content[${fieldName}]`, fieldName, template.fields[fieldName], record.content[fieldName], errors.hasOwnProperty(fieldName) && errors[fieldName]) %>
       <% } %>
 
       <div class="submit field">
         <input type="hidden" name="_csrf" value="<%- csrf %>">
         <input class="button" type="submit" value="Update">
-        <% if (section.multiple) { %>
+        <% if (template.type === 'collection' || template.type === 'collection') { %>
           <a href="./delete" class="floated right basic red button">Delete</a>
         <% } %>
       </div>
-    </form> 
+    </form>
   </div> 
 </section>

@@ -3,7 +3,7 @@
   <%- title %>
   
   <ul class="basic fixed menu">
-    <li><a href="/dashboard/sections/<%- section.id %>/records/new" class="small button">New <%- section.labelSingular %></a></li>
+    <li><a href="/dashboard/<%- template.typePlural %>/<%- template.name %>/records/new" class="small button">New <%- template.labelSingular %></a></li>
   </ul>
 </div>
 
@@ -12,20 +12,20 @@
     <table class="preview table <%- tableAction %>">
       <thead>
         <tr>
-          <% section.tableColumnsHeaders.forEach(header => { %>
+          <% template.tableColumnsHeaders.forEach(header => { %>
           <th><%- header %></th>
           <% }) %>
           <th class="no-sort"></th>
         </tr>
       </thead>
       <tbody>
-        <% section.records.forEach(record => { %>
+        <% template.records.forEach(record => { %>
         <tr data-id="<%- record.id %>">
-          <% section.tableColumns.forEach(key => { %>
-          <td><%- record.previewContent(key.toLowerCase(), section) %></td>
+          <% template.tableColumns.forEach(key => { %>
+          <td><%- record.previewContent(key.toLowerCase(), template) %></td>
           <% }) %>
           <td class="right aligned">
-            <a href="/dashboard/records/<%- record.id %>/edit" class="small basic button">
+            <a href="/dashboard/<%- template.typePlural %>/<%- template.name %>/records/<%- record.id %>" class="small basic button">
               Edit
             </a>
           </td>

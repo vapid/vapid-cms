@@ -1,8 +1,7 @@
-{{#error}}
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{{ title }}</title>
+  <title>{{error.title}}</title>
   <link rel="stylesheet" href="/dashboard/vendor/semantic-ui/semantic.min.css">
   <style type="text/css">
     .ui.vertical.segment {
@@ -12,26 +11,25 @@
 </head>
 <body class="trace error">
   <div class="ui inverted vertical segment">
-    <h1 class="ui huge header">{{title}} ({{status}})</h1>
-    <pre><code>{{stack}}</code></pre>
+    <h1 class="ui huge header">{{error.title}} ({{error.status}})</h1>
+    <pre><code>{{error.stack}}</code></pre>
   </div>
 
   <div class="ui vertical segment">
     <table class="ui very basic table">
       <tbody>
-        {{#request}}
+        {{#if error.request}}
         <tr>
           <td class="collapsing">Method</td>
-          <td>{{method}}</td>
+          <td>{{error.request.method}}</td>
         </tr>
         <tr>
           <td>URL</td>
-          <td>{{url}}</td>
+          <td>{{error.request.url}}</td>
         </tr>
-        {{/request}}
+        {{/if}}
       </tbody>
     </table>
   </div>
 </body>
 </html>
-{{/error}}
