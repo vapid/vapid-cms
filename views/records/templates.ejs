@@ -1,0 +1,15 @@
+<h1 class="heading">
+  <%- include('../toggle') %>
+  <%- title %>
+</h1>
+
+<section class="section page-templates">
+  <h2 class="page-templates__header">Select a Page Template</h2>
+  <ul class="page-templates__list">
+    <% for (template of templates) { %>
+      <li class="page-templates__template">
+        <a href="/dashboard/pages/<%- template.name %>/records/new"><%- template.name === 'index' ? 'Home' : template.name %></a>
+      </li>
+    <% } %>
+  </ul>
+</section>

@@ -1,6 +1,6 @@
 <div class="heading">
   <%- include('../toggle') %>
-  <%- title %>
+  <%- record.name || title %>
   
   <ul class="basic fixed menu">
     <li><a href="/dashboard/<%- template.typePlural %>/<%- template.name %>/records/new" class="small button">New <%- template.labelSingular %></a></li>

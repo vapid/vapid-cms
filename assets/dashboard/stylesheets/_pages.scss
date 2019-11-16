@@ -1,0 +1,57 @@
+.page-templates{
+  padding: 1.6rem 2rem 1.5rem;
+}
+
+.page-templates__list {
+  list-style: none;
+  text-align: center;
+}
+
+.page-templates__header {
+  margin-bottom: 3.2rem;
+}
+
+.page-templates__template {
+  display: inline-flex;
+  justify-content: flex-start;
+  margin-bottom: 3.2rem;
+  margin-right: 3.2rem;
+  text-align: center;
+}
+
+.page-templates__template a::after {
+  content: "";
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  width: calc(100% - 2.4rem);
+  height: calc(100% - 5.6rem);
+  border: 2px solid $grey-lighterer;
+  border-radius: 4px;
+  background: linear-gradient(-50.5deg, transparent calc(50% - 2px), $grey-lighterer calc(50% - 1px), $grey-lighterer calc(50%), transparent calc(50% + 1px)), linear-gradient(50.5deg, transparent calc(50% - 2px), $grey-lighterer calc(50% - 1px), $grey-lighterer calc(50%), transparent calc(50% + 1px));
+}
+
+.page-templates__template a {
+  position: relative;
+  width: 220px;
+  padding-top: 260px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  line-height: 3.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  cursor: pointer;
+  display: block;
+  color: $grey-dark;
+  background-color: $grey-lightest;
+  font-weight: 600;
+  text-transform: capitalize;
+  opacity: 0.85;
+  background-clip: content-box;
+  transition: box-shadow .28s, opacity .28s;
+}
+
+.page-templates__template a:hover, .page-templates__template a:focus {
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  text-decoration: none;
+  opacity: 1;
+}

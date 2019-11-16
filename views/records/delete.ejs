@@ -1,11 +1,11 @@
 <h1 class="heading">
   <%- include('../toggle') %>
-  Delete <%- record.template.labelSingular %>
+  Delete <%- record.name || record.template.labelSingular %>
 </h1>
 
 <section class="section">
   <div class="content">
-    <p>Are you sure you'd like to delete this <%- record.template.labelSingular.toLowerCase() %>?</p>
+    <p>Are you sure you'd like to delete this <%- record.template.type === 'page' ? "page" : "collection item" %>?</p>
 
     <table class="table">
       <tbody>
@@ -25,6 +25,6 @@
         <input type="hidden" name="_csrf" value="<%- csrf %>">
         <input type="submit" class="red button" value="Delete">
       </div>
-    </form> 
+    </form>
   </div>
 </section>

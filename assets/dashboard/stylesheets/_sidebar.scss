@@ -105,10 +105,13 @@
   cursor: pointer;
   transition: color .28s;
   outline: none;
+  display: block;
+  text-align: center;
 }
 
 .sidebar__add-page:hover, .sidebar__add-page:focus {
   color: black;
+  text-decoration: none;
 }
 
 .sidebar__divider {

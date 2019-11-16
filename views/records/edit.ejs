@@ -1,6 +1,6 @@
 <h1 class="heading">
   <%- include('../toggle') %>
-  <%- title %>
+  <%- record.name || title %>
 </h1>
 
 <section class="section">
@@ -13,8 +13,8 @@
       <div class="submit field">
         <input type="hidden" name="_csrf" value="<%- csrf %>">
         <input class="button" type="submit" value="Update">
-        <% if (template.type === 'collection' || template.type === 'collection') { %>
-          <a href="./delete" class="floated right basic red button">Delete</a>
+        <% if (template.type === 'collection' || template.type === 'page') { %>
+          <a href="/dashboard/<%- template.type %>/<%- template.name %>/records/<%- record.id %>/delete" class="floated right basic red button">Delete</a>
         <% } %>
       </div>
     </form>

@@ -43,18 +43,18 @@
                 <% pages.forEach(s => { if (!s.navigation) { return; }%>
                 <a href="/dashboard/pages/<%- s.slug %>/" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
                   <%- include(`../../assets/dashboard/images/page.svg`) %>
-                  <%- s.title %>
+                  <%- s.name %>
                 </a>
                 <% }) %>
                 <hr class="sidebar__divider" />
                 <% pages.forEach(s => { if (s.navigation) { return; } %>
                   <a href="/dashboard/pages/<%- s.slug %>/" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
                     <%- include(`../../assets/dashboard/images/page.svg`) %>
-                    <%- s.title %>
+                    <%- s.name %>
                   </a>
                 <% }) %>
               </div>
-              <button class="sidebar__add-page">Add a Page</button>
+              <a href="/dashboard/pages" class="sidebar__add-page">Add a Page</a>
             </div>
             <% } %>
 

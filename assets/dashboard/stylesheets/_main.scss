@@ -8,6 +8,7 @@ main {
     font-weight: 500;
     line-height: 1em;
     border-bottom: 1px solid $grey-lighterer;
+    text-transform: capitalize;
 
     &, h1 {
       font-size: 2.4rem;
