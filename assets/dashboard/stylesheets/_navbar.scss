@@ -2,6 +2,9 @@
   position: relative;
   height: 5.6rem;
   margin-bottom: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 
   a {
     color: $grey-darker;
@@ -21,6 +24,10 @@
     font-weight: 600;
     line-height: 1em;
     text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
 
     .switch-website {
       display: inline-block;
@@ -126,15 +133,19 @@
   }
 
   .action {
-    position: absolute;
     right: 1rem;
     top: 50%;
     margin-top: -1.7rem;
     min-width: 0;
+    height: 4.2rem;
     padding: 0.9rem 1rem;
     font-size: 1.2rem;
     background: transparent;
     border: 1px solid $grey-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.2rem;
 
     @include desktop {
       min-width: 11.1rem;
@@ -152,13 +163,26 @@
       }
     }
 
-    &:before {
+    &.view:before {
       display: inline-block;
       content: url('../images/view.svg');
       vertical-align: middle;
 
       @include desktop {
         margin-right: 0.5rem;
+      }
+    }
+
+    &.deploy {
+      background-color: $purple;
+      color: white;
+      &:before {
+        display: inline-block;
+        content: url('../images/deploy.svg');
+        vertical-align: middle;
+        @include desktop {
+          margin-right: 0.5rem;
+        }
       }
     }
 

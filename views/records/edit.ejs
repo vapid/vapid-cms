@@ -1,6 +1,10 @@
 <h1 class="heading">
   <%- include('../toggle') %>
-  <%- record.name || title %>
+  <%- title %>
+
+  <ul class="basic fixed menu">
+    <li><button class="small button">Settings</button></li>
+  </ul>
 </h1>
 
 <section class="section">
@@ -10,11 +14,11 @@
         <%- Form.field(`content[${fieldName}]`, fieldName, template.fields[fieldName], record.content[fieldName], errors.hasOwnProperty(fieldName) && errors[fieldName]) %>
       <% } %>
 
-      <div class="submit field">
+      <div class="submit field" style="overflow: hidden;">
         <input type="hidden" name="_csrf" value="<%- csrf %>">
-        <input class="button" type="submit" value="Update">
+        <input class="button floated right" type="submit" value="Save">
         <% if (template.type === 'collection' || template.type === 'page') { %>
-          <a href="/dashboard/<%- template.type %>/<%- template.name %>/records/<%- record.id %>/delete" class="floated right basic red button">Delete</a>
+          <a href="/dashboard/<%- template.type %>/<%- template.name %>/records/<%- record.id %>/delete" class="floated left basic red button">Delete</a>
         <% } %>
       </div>
     </form>

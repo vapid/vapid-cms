@@ -1,6 +1,5 @@
 .section {
-  padding: 4rem 2rem; 
-  border-bottom: 1px solid $grey-lighterer;
+  border-bottom: 1px solid $grey-lighter;
 
   &:last-of-type {
     border-bottom: none;
@@ -11,6 +10,8 @@
     width: 100%;
     max-width: 68rem;
     margin: 0 auto;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
 
     &.wide {
       max-width: 108rem;
@@ -27,6 +28,11 @@
     // For table/Trix on mobile
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  > .metadata {
+    background-color: $grey-lightest;
+    padding: 4rem 2rem;
   }
 
   .subheader {
