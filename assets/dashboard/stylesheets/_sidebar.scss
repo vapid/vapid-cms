@@ -1,4 +1,6 @@
 .sidebar {
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   width: $sidebar-width;
@@ -96,7 +98,7 @@
   width: calc(100% - 4rem);
   margin: 1.2rem 2rem 0 2rem;
   font-weight: 600;
-  color: #979797;
+  color: $grey;
   background: transparent;
   border: 1px solid currentColor;
   border-radius: 4px;
@@ -110,8 +112,8 @@
 }
 
 .sidebar__add-page:hover, .sidebar__add-page:focus {
-  color: black;
   text-decoration: none;
+  color: $grey-darkest;
 }
 
 .sidebar__divider {
@@ -128,7 +130,7 @@
 }
 
 .menu.sortable a {
-  background: rgba(0,0,0,.05);
+  background: $grey-lighter;
 }
 
 .menu.sortable hr ~ a {
@@ -145,7 +147,7 @@
   text-align: center;
   height: 5.4rem;
   top: -5.5rem;
-  color: rgba(0,0,0,.25);
+  color: $grey;
   font-weight: 600;
   font-size: 1.2rem;
   border-radius: 4px 0 0 4px;
@@ -157,7 +159,7 @@
   line-height: 3.6rem;
   text-align: center;
   height: 3.6rem;
-  color: rgba(0,0,0,.25);
+  color: $grey;
   font-weight: 600;
   font-size: 1.2rem;
   padding: 0;
@@ -173,8 +175,8 @@ hr.sidebar__divider::before {
   width: 100%;
   padding-right: 0.4rem;
   font-size: 11px;
-  color: black;
-  background: rgba(0, 0, 0, 0.05);
+  color: $grey-darkest;
+  background: $grey-lighter;
   height: 2.4rem;
   line-height: 2.8rem;
   font-weight: 600;
@@ -189,7 +191,7 @@ hr.sidebar__divider::after {
   width: 100%;
   padding-right: 0.4rem;
   font-size: 11px;
-  color: black;
+  color: $grey-darkest;
   line-height: 2rem;
   height: 2rem;
   font-weight: 600;

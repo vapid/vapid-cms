@@ -13,11 +13,13 @@
   white-space: nowrap;
   cursor: pointer;
   background-color: $purple-light;
-  background-image: linear-gradient(to bottom, $purple-light, $purple);
+  background-image: linear-gradient(to bottom, transparent, $purple);
+
   outline: none;
+  transition: background-color .15s, color .15s;
 
   &:hover {
-    background: $purple;
+    background-color: $purple;
     text-decoration: none;
   }
 
@@ -46,20 +48,20 @@
   &.orange {
     color: white;
     background-color: $orange;
-    background-image: linear-gradient(to bottom, $orange, $orange-dark);
+    background-image: linear-gradient(to bottom, transparent, $orange-dark);
     border: 1px solid $orange-darker;
 
     &:hover {
-      background: $orange-dark;
+      background-color: $orange-dark;
     }
   }
 
   &.red {
-    background-color: $red-dark;
-    background-image: linear-gradient(to bottom, $red-dark, $red-darker);
+    background-color: $red-darker;
+    background-image: linear-gradient(to bottom, $red-dark, transparent);
 
     &:hover {
-      background: $red-dark;
+      background-color: $red-dark;
     }
   }
 

@@ -26,9 +26,9 @@
   left: 1.2rem;
   width: calc(100% - 2.4rem);
   height: calc(100% - 5.6rem);
-  border: 2px solid $grey-lighterer;
+  border: 2px solid $grey-lighter;
   border-radius: 4px;
-  background: linear-gradient(-50.5deg, transparent calc(50% - 2px), $grey-lighterer calc(50% - 1px), $grey-lighterer calc(50%), transparent calc(50% + 1px)), linear-gradient(50.5deg, transparent calc(50% - 2px), $grey-lighterer calc(50% - 1px), $grey-lighterer calc(50%), transparent calc(50% + 1px));
+  background: linear-gradient(-50.5deg, transparent calc(50% - 2px), $grey-lighter calc(50% - 1px), $grey-lighter calc(50%), transparent calc(50% + 1px)), linear-gradient(50.5deg, transparent calc(50% - 2px), $grey-lighter calc(50% - 1px), $grey-lighter calc(50%), transparent calc(50% + 1px));
 }
 
 .page-templates__template a {

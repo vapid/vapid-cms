@@ -46,4 +46,17 @@ const init = () => {
 }
 
 document.addEventListener('input', (event) => event.target.tagName.toLowerCase() === 'textarea' && autoExpand(event.target), false);
+document.addEventListener('input', (event) => {
+  const el = event.target;
+  if (el.tagName.toLowerCase() !== 'input' || el.getAttribute('type') !== 'file') { return; }
+  const reader = new FileReader();
+  reader.onload = (e) => { document.getElementById(el.name).src = e.target.result; };
+  reader.readAsDataURL(el.files[0]);
+}, false);
+document.addEventListener('change', (event) => {
+  const el = event.target;
+  if (el.tagName.toLowerCase() !== 'input' || el.getAttribute('type') !== 'checkbox' || !el.id.startsWith('_destroy')) { return; }
+  el.parentElement.parentElement.querySelector('img').src = '';
+}, false);
+
 document.addEventListener('turbolinks:load', init);

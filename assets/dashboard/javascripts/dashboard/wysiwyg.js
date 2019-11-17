@@ -1,9 +1,33 @@
 /* globals fetch, FormData, Node, document */
 const Quill = require('quill');
+const { QuillImage, QuillImageBindings } = require('quill-image');
 
-const Delta = Quill.import('delta');
+Quill.register('modules/quillImage', QuillImage);
+
 const Break = Quill.import('blots/break');
 const Embed = Quill.import('blots/embed');
+
+async function imageHandler(_quill, id, b64Image, type = 'image/png') {
+
+  // base64 to blob
+  const blob = await fetch(b64Image).then(res => res.blob());
+
+  const filename = [id, '.', type.match(/^image\/(\w+)$/i)[1]].join('');
+
+  // generate a form data
+  const formData = new FormData();
+  formData.set('file', blob, filename);
+  formData.set('_csrf', document.getElementsByName('_csrf')[0].value);
+
+  const res = await fetch('/dashboard/upload', {
+    method: 'POST',
+    body: formData,
+  }).then(r => r.json());
+  console.log(res);
+
+  if (res.status !== 'success') { throw new Error(res.message); }
+  return res.data.url;
+}
 
 class Linebreak extends Break {
   length () {
@@ -26,6 +50,9 @@ Quill.register(Linebreak);
 
 const options = {
   modules: {
+    quillImage: {
+      handler: imageHandler
+    },
     toolbar: [
       [{ header: [2, 3, false] }],
       ['bold', 'italic', 'underline', 'strike'],
@@ -37,6 +64,7 @@ const options = {
     },
     keyboard: {
       bindings: {
+        ...QuillImageBindings,
         linebreak: {
           key: 13,
           shiftKey: true,
@@ -59,7 +87,7 @@ const options = {
       },
     },
   },
-  theme: 'snow',
+  theme: 'bubble',
 };
 
 document.addEventListener("turbolinks:load", () => {

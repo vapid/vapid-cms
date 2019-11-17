@@ -1,10 +1,11 @@
-@import "../vendor/quill.snow";
+// @import "../vendor/quill.snow";
+@import "../vendor/quill.bubble";
 
 .wysiwyg {
   cursor: text;
 }
 
-.ql-snow {
+.ql-snow, .ql-bubble {
   a {
     color: #4A0C80;
   }
@@ -16,7 +17,8 @@
     pre,
     h1, h2, h3, 
     h4, h5, h6 {
-      margin: 1.5rem 0;
+      margin: 0 0 1em;
+      line-height: 1.2em;
 
       &:first-child {
         margin-top: 0;

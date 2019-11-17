@@ -1,20 +1,19 @@
 // Colors
-$grey-darkest: #111111;
-$grey-darkerer: #333333;
-$grey-darker: #4A4A4A;
-$grey-dark: #979797;
-$grey: #9B9B9B;
-$grey-light: #CCCCCC;
-$grey-lighter: #D8D8D8;
-$grey-lighterer: #EEEEEE;
-$grey-lightest: #F4F4F4;
+$grey-darkest: hsl(215, 11%, 18%);
+$grey-darkerer: hsl(215, 12%, 22%);
+$grey-darker: hsl(215, 13%, 30%);
+$grey-dark: hsl(215, 14%, 46%);
+$grey: hsl(215, 18%, 63%);
+$grey-light: hsl(215, 32%, 84%);
+$grey-lighter: hsl(215, 33%, 93%);
+$grey-lightest: hsl(215, 33%, 96%);
 
 $blue-dark: #2765AE;
 $blue: #4080CA;
 $blue-light: #4A90E2;
 
 $purple-darker: #4A0C80;
-$purple-dark: #6C0CC0;
+$purple-dark: #6c0cc0;
 $purple: #9630D5;
 $purple-light: #C982DC;
 
@@ -24,8 +23,8 @@ $orange-darker: #F1B045;
 
 $red-darker: #9F041B;
 $red-dark: #C30A1B;
-$red: #D0021B;
-$red-light: lighten($red, 20%);
+$red: #cf021a;
+$red-light: #fd3a51;
 $red-lighter: #FFF6F6;
 
 // Typography
