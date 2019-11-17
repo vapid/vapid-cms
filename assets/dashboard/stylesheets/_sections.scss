@@ -5,8 +5,8 @@
     border-bottom: none;
   }
 
-  > .header,
-  > .content {
+  .header,
+  .content {
     width: 100%;
     max-width: 68rem;
     margin: 0 auto;
@@ -18,21 +18,55 @@
     }
   }
 
-  > .header {
+  .header {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 2rem;
   }
 
-  > .content {
-    // For table/Trix on mobile
-    overflow-x: auto;
+  .content {
+    overflow: visible;
     -webkit-overflow-scrolling: touch;
   }
 
-  > .metadata {
+  .metadata {
     background-color: $grey-lightest;
-    padding: 4rem 2rem;
+    height: 0;
+    transition: height .28s;
+    overflow: hidden;
+
+    &.open {
+      height: 254px; // Magic number is magic. Make this work better.
+    }
+
+    input[name='metadata[slug]'] {
+      background-image: linear-gradient(-73deg, transparent 0px, transparent 6px, black 7px, transparent 8px);
+      background-size: 13px 13px;
+      background-position: top left;
+      background-repeat: no-repeat;
+      background-position: 7px center;
+      padding-left: 1.8rem;
+    }
+
+    input[name='metadata[slug]']::placeholder {
+      color: rgb(152, 168, 185);
+    }
+
+    input[name='metadata[slug]']:placeholder-shown {
+      background-image: linear-gradient(-73deg, transparent 0px, transparent 6px, rgb(152, 168, 185) 7px, transparent 8px);
+    }
+
+    h3 {
+      margin-bottom: 3.2rem;
+    }
+
+    .metadata__split-section {
+      display: flex;
+      .field { flex-grow: 1; }
+      .field:not(:last-of-type) {
+        margin-right: 1.2rem;
+      }
+    }
   }
 
   .subheader {

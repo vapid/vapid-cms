@@ -125,6 +125,7 @@
     height: 3.6rem;
     border-radius: 100%;
     overflow: hidden;
+    z-index: 1;
 
     img {
       width: 100%;
@@ -141,11 +142,13 @@
     padding: 0.9rem 1rem;
     font-size: 1.2rem;
     background: transparent;
-    border: 1px solid $grey-light;
+    border: 1px solid $grey-dark;
+    color: $grey-dark;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 1.2rem;
+    z-index: 1;
 
     @include desktop {
       min-width: 11.1rem;

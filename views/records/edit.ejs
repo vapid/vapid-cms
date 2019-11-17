@@ -2,25 +2,61 @@
   <%- include('../toggle') %>
   <%- title %>
 
-  <ul class="basic fixed menu">
-    <li><button class="small button">Settings</button></li>
-  </ul>
+  <% if (!isNewRecord && (template.type === 'page' || template.type === 'collection')) { %>
+    <ul class="basic fixed menu">
+      <li><button class="small button" id="page-settings">Settings</button></li>
+    </ul>
+  <% } %>
 </h1>
 
 <section class="section">
-  <div class="content">
-    <form class="form" action="<%- action %>" method="post" enctype="multipart/form-data" data-autosave="true" novalidate>
-      <% for (const { _name: fieldName } of record.template.sortedFields) { %>
-        <%- Form.field(`content[${fieldName}]`, fieldName, template.fields[fieldName], record.content[fieldName], errors.hasOwnProperty(fieldName) && errors[fieldName]) %>
+  <% if (template.hasFields) { %>
+  <form class="form" action="<%- action %>" method="post" enctype="multipart/form-data" data-autosave="true" novalidate>
+    <% if (template.type === 'page' || template.type === 'collection') { %>
+      <section class="metadata <%- isNewRecord ? 'open' : '' %>">
+        <div class="content">
+          <h3>Page Settings</h3>
+          <div class="metadata__split-section">
+            <%- Form.field(`metadata[name]`, 'name', {
+              placeholder: template.labelSingular,
+              required: false,
+              help: 'Human readable name used for site navigation.'
+            }, record ? record.metadata.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]']) %>
+            <%- Form.field(`metadata[slug]`, 'slug', {
+              placeholder: record && record.defaultSlug,
+              required: false,
+              help: 'The URL where this page can be found.'
+            }, record && record.metadata.slug, errors.slug) %>
+          </div>
+        </div>
+      </section>
+    <% } %>
+    <div class="content">
+      <% for (const { _name: fieldName } of template.sortedFields) { %>
+        <%- Form.field(`content[${fieldName}]`, fieldName, template.fields[fieldName], record ? record.content[fieldName] : '', errors.content && errors.content[fieldName]) %>
       <% } %>
 
       <div class="submit field" style="overflow: hidden;">
+        <input class="button floated right" type="submit" value="<%- template.type === 'form' ?'Submit' : 'Save' %>">
+        <% if (!isNewRecord && (template.type === 'collection' || template.type === 'page')) { %>
+          <a href="<%- deletePath %>" class="floated left basic red button">Delete</a>
+        <% } %>
+
         <input type="hidden" name="_csrf" value="<%- csrf %>">
-        <input class="button floated right" type="submit" value="Save">
-        <% if (template.type === 'collection' || template.type === 'page') { %>
-          <a href="/dashboard/<%- template.type %>/<%- template.name %>/records/<%- record.id %>/delete" class="floated left basic red button">Delete</a>
+        <% if (template.type === 'form') { %>
+          <input type="hidden" name="_subject" value="<%- subject %>" />
+          <input type="hidden" name="_next" value="<%- next %>" />
+          <input type="text" name="_gotcha" style="display:none">
         <% } %>
       </div>
-    </form>
-  </div> 
+
+      <% if (template.type === 'form') { %>
+        <br>
+        <p><em>Note: This preview form may not resemble the one rendered on your site.</em></p>
+      <% } %>
+    </div>
+  </form>
+  <% } else { %>
+    <p>This template has no fields. View the <a href="https://docs.vapid.com" title="Vapid documentation">documentation</a> if you need help creating some.</p>
+  <% } %>
 </section>

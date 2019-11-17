@@ -37,7 +37,14 @@ const autoExpand = (field) => {
     + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
   field.style.height = `${height}px`;
 };
-const init = () => [...document.querySelectorAll('textarea')].map(autoExpand);
+
+const init = () => {
+  [...document.querySelectorAll('textarea')].map(autoExpand);
+  document.getElementById('page-settings').addEventListener('click', () => {
+    document.querySelector('.metadata').classList.toggle('open');
+  });
+}
+
 document.addEventListener('input', (event) => event.target.tagName.toLowerCase() === 'textarea' && autoExpand(event.target), false);
 document.addEventListener('turbolinks:load', init);
 window.addEventListener('DOMContentLoaded', init);
