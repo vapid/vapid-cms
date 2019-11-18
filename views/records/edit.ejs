@@ -17,10 +17,10 @@
           <h3>Page Settings</h3>
           <div class="metadata__split-section">
             <%- Form.field(`metadata[name]`, 'name', {
-              placeholder: template.labelSingular,
+              placeholder: record && record.defaultName,
               required: false,
               help: 'Human readable name used for site navigation.'
-            }, record ? record.metadata.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]']) %>
+            }, record ? record.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]']) %>
             <%- Form.field(`metadata[slug]`, 'slug', {
               placeholder: record && record.defaultSlug,
               required: false,
