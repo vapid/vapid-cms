@@ -20,7 +20,7 @@
               placeholder: record && record.defaultName,
               required: false,
               help: 'Human readable name used for site navigation.'
-            }, record ? record.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]']) %>
+            }, (record) ? record.metadata.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]']) %>
             <%- Form.field(`metadata[slug]`, 'slug', {
               placeholder: record && record.defaultSlug,
               required: false,
