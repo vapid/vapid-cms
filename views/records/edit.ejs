@@ -10,7 +10,6 @@
 </h1>
 
 <section class="section">
-  <% if (template.hasFields) { %>
   <form class="form" action="<%- action %>" method="post" enctype="multipart/form-data" data-autosave="true" novalidate>
     <% if (template.type === 'page' || template.type === 'collection') { %>
       <section class="metadata <%- isNewRecord ? 'open' : '' %>">
@@ -32,8 +31,15 @@
       </section>
     <% } %>
     <div class="content">
-      <% for (const { _name: fieldName } of template.sortedFields) { %>
-        <%- Form.field(`content[${fieldName}]`, fieldName, template.fields[fieldName], record ? record.content[fieldName] : '', errors.content && errors.content[fieldName]) %>
+      <% if (template.hasFields) { %>
+        <% for (const { _name: fieldName } of template.sortedFields) { %>
+          <%- Form.field(`content[${fieldName}]`, fieldName, template.fields[fieldName], record ? record.content[fieldName] : '', errors.content && errors.content[fieldName]) %>
+        <% } %>
+
+      <% } else { %>
+        <div class="content">
+          <p>This template has no fields. View the <a href="https://docs.vapid.com" title="Vapid documentation">documentation</a> if you need help creating some.</p>
+        </div>
       <% } %>
 
       <div class="submit field" style="overflow: hidden;">
@@ -56,7 +62,4 @@
       <% } %>
     </div>
   </form>
-  <% } else { %>
-    <p>This template has no fields. View the <a href="https://docs.vapid.com" title="Vapid documentation">documentation</a> if you need help creating some.</p>
-  <% } %>
 </section>

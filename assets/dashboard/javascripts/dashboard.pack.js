@@ -47,4 +47,3 @@ const init = () => {
 
 document.addEventListener('input', (event) => event.target.tagName.toLowerCase() === 'textarea' && autoExpand(event.target), false);
 document.addEventListener('turbolinks:load', init);
-window.addEventListener('DOMContentLoaded', init);

@@ -8,9 +8,9 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/site.css">
 </head>
 <body>
-  <header class="header" style="background-image: url({{background_image type=image tag=false required=false}})">
+  <header class="header" style="background-image: url({{this.background_image type=image tag=false required=false}})">
     <h2>A New Site</h2>
-    <h1><span>Hello, {{vapid label="Greeting"}}</span></h1>
+    <h1><span>Hello, {{this.vapid label="Greeting" default="Vapid"}}</span></h1>
 
     <div class="container">
       <p>This template already has few tags—visit the dashboard now to edit their content. And when you're done, <a href="https://docs.vapid.com/content-types" target="_blank">add your own content tags</a>.</p>
