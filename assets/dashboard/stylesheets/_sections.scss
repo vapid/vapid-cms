@@ -32,11 +32,14 @@
   .metadata {
     background-color: $grey-lightest;
     height: 0;
-    transition: height .28s;
+    transition: height .28s, visibility .28s;
     overflow: hidden;
+    visibility: hidden;
 
     &.open {
       height: 254px; // Magic number is magic. Make this work better.
+      transition: height .28s, visibility 0s;
+      visibility: visible;
     }
 
     input[name='metadata[slug]'] {

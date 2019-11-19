@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
-=======
 /* globals fetch, FormData, Node, document */
->>>>>>> Stashed changes
 const Quill = require('quill');
 
 const Delta = Quill.import('delta');
