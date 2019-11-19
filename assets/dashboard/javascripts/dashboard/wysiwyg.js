@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+/* globals fetch, FormData, Node, document */
+>>>>>>> Stashed changes
 const Quill = require('quill');
 
 const Delta = Quill.import('delta');
@@ -39,9 +43,9 @@ const options = {
         linebreak: {
           key: 13,
           shiftKey: true,
-          handler: function (range) {
-            let currentLeaf = this.quill.getLeaf(range.index)[0]
-            let nextLeaf = this.quill.getLeaf(range.index + 1)[0]
+          handler(range) {
+            const currentLeaf = this.quill.getLeaf(range.index)[0]
+            const nextLeaf = this.quill.getLeaf(range.index + 1)[0]
 
             this.quill.insertEmbed(range.index, 'linebreak', true, 'user');
 
@@ -65,11 +69,21 @@ document.addEventListener("turbolinks:load", () => {
   const editors = document.querySelectorAll('.wysiwyg');
 
   [].forEach.call(editors, (editor) => {
-    options.modules.toolbar[4] = editor.getAttribute('data-images') === "true" ?
+    options.modules.toolbar[4] = editor.getAttribute('data-images') === 'true' ?
       ['image'] : [];
 
     const quill = new Quill(editor, options);
     const input = editor.nextElementSibling;
+
+    // Paste without text formatting
+    quill.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
+      delta.ops.map((op) => {
+        op.attributes = op.attributes || {};
+        delete op.attributes.color;
+        delete op.attributes.background;
+      });
+      return delta;
+    })
 
     quill.on('text-change', (delta, oldDelta, source) => {
       const content = editor.firstChild.innerHTML
