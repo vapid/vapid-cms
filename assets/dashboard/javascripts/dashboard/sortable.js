@@ -44,8 +44,6 @@ document.addEventListener("turbolinks:load", () => {
         if (el.tagName.toLowerCase() === 'hr') { break; }
         if (el === item) { nav = true; }
       }
-      // If this is not a nav item, correct for the extra element in the sorting container.
-      // if (!nav) { to -= 1; }
 
       $.post('/dashboard/records/reorder', { id, from, to, nav }).fail((err) => {
         // TODO: probably need some better client-side error handling here

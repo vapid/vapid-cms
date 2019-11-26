@@ -43,6 +43,26 @@ const init = () => {
   document.getElementById('page-settings').addEventListener('click', () => {
     document.querySelector('.metadata').classList.toggle('open');
   });
+
+  for (const link of [...document.querySelectorAll('.field__link')]) {
+    const name = link.querySelector('input[type=text]');
+    const sel = link.querySelector('select');
+    const url = link.querySelector('input[type=url]');
+
+    sel.addEventListener('change', () => {
+      sel.classList.toggle('selected', !!sel.value);
+      url.value = '';
+      name.setAttribute('placeholder', sel.value ? sel.selectedOptions[0].textContent : '');
+    });
+
+    url.addEventListener('input', () => {
+      sel.value = '';
+      sel.classList.remove('selected');
+      name.setAttribute('placeholder', url.value);
+    });
+  }
+
+
 }
 
 document.addEventListener('input', (event) => event.target.tagName.toLowerCase() === 'textarea' && autoExpand(event.target), false);
@@ -57,6 +77,13 @@ document.addEventListener('change', (event) => {
   const el = event.target;
   if (el.tagName.toLowerCase() !== 'input' || el.getAttribute('type') !== 'checkbox' || !el.id.startsWith('_destroy')) { return; }
   el.parentElement.parentElement.querySelector('img').src = '';
+}, false);
+
+// Checkboxes don't send a value if un-checked. Ensure we send 'false' to the server for our data model.
+document.addEventListener('change', (event) => {
+  const el = event.target;
+  if (el.tagName.toLowerCase() !== 'input' || el.getAttribute('type') !== 'checkbox' || !el.id.startsWith('content')) { return; }
+  el.checked ? el.previousElementSibling.setAttribute('name', '') : el.previousElementSibling.setAttribute('name', el.getAttribute('name'));
 }, false);
 
 document.addEventListener('turbolinks:load', init);

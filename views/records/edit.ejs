@@ -2,7 +2,7 @@
   <%- include('../toggle') %>
   <%- title %>
 
-  <% if (!isNewRecord && (template.type === 'page' || template.type === 'collection')) { %>
+  <% if (!isNewRecord && (template.type === 'page' || template.type === 'collection') && template.hasView) { %>
     <ul class="basic fixed menu">
       <li><button class="small button" id="page-settings">Settings</button></li>
     </ul>
@@ -11,7 +11,7 @@
 
 <section class="section">
   <form class="form" action="<%- action %>" method="post" enctype="multipart/form-data" data-autosave="true" novalidate>
-    <% if (template.type === 'page' || template.type === 'collection') { %>
+    <% if (template.hasView) { %>
       <section class="metadata <%- isNewRecord ? 'open' : '' %>">
         <div class="content">
           <h3>Page Settings</h3>
@@ -20,12 +20,12 @@
               placeholder: record && record.defaultName,
               required: false,
               help: 'Human readable name used for site navigation.'
-            }, (record) ? record.metadata.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]']) %>
+            }, (record) ? record.metadata.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]'], { pages }) %>
             <%- Form.field(`metadata[slug]`, 'slug', {
               placeholder: record && record.defaultSlug,
               required: false,
               help: 'The URL where this page can be found.'
-            }, record && record.metadata.slug, errors.slug) %>
+            }, record && record.metadata.slug, errors.slug, { pages }) %>
           </div>
         </div>
       </section>
@@ -33,7 +33,7 @@
     <div class="content">
       <% if (template.hasFields) { %>
         <% for (const { _name: fieldName } of template.sortedFields) { %>
-          <%- Form.field(`content[${fieldName}]`, fieldName, template.fields[fieldName], record ? record.content[fieldName] : '', errors.content && errors.content[fieldName]) %>
+          <%- Form.field(`content[${fieldName}]`, fieldName, template.fields[fieldName], record ? record.content[fieldName] : '', errors.content && errors.content[fieldName], { pages }) %>
         <% } %>
 
       <% } else { %>

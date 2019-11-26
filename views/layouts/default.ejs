@@ -41,14 +41,14 @@
           <div class="item">
             <div class="header">Pages</div>
             <div class="menu sortable">
-              <% pages.forEach(s => { if (!s.navigation) { return; }%>
+              <% pages.forEach(s => { if (!s.isNavigation) { return; }%>
               <a href="/dashboard/pages/<%- s.slug %>/" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
                 <%- include(`../../assets/dashboard/images/page.svg`) %>
                 <%- s.name %>
               </a>
               <% }) %>
               <hr class="sidebar__divider" />
-              <% pages.forEach(s => { if (s.navigation) { return; } %>
+              <% pages.forEach(s => { if (s.isNavigation) { return; } %>
                 <a href="/dashboard/pages/<%- s.slug %>/" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
                   <%- include(`../../assets/dashboard/images/page.svg`) %>
                   <%- s.name %>

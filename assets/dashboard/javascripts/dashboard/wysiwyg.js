@@ -23,7 +23,6 @@ async function imageHandler(_quill, id, b64Image, type = 'image/png') {
     method: 'POST',
     body: formData,
   }).then(r => r.json());
-  console.log(res);
 
   if (res.status !== 'success') { throw new Error(res.message); }
   return res.data.url;
@@ -54,7 +53,7 @@ const options = {
       handler: imageHandler
     },
     toolbar: [
-      [{ header: [2, 3, false] }],
+      [{ header: [2, 3, 4, 5, 6, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       ['link', 'blockquote', 'code-block'],
       [{ list: 'ordered' }, { list: 'bullet' }],
