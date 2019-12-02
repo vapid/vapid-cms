@@ -65,7 +65,7 @@ program
     Logger.info(`Starting the ${vapid.env} server...`);
     await vapid.start();
     Logger.extra([
-      `View your website at http://localhost:${vapid.config.port}`,
+      `View your website at ${vapid.url}`,
       'Ctrl + C to quit',
     ]);
   }));
