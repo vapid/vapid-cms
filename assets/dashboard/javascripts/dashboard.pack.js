@@ -40,7 +40,8 @@ const autoExpand = (field) => {
 
 const init = () => {
   [...document.querySelectorAll('textarea')].map(autoExpand);
-  document.getElementById('page-settings').addEventListener('click', () => {
+  const settingsButton = document.getElementById('page-settings');
+  settingsButton && settingsButton.addEventListener('click', () => {
     document.querySelector('.metadata').classList.toggle('open');
   });
 
