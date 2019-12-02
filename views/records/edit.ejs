@@ -26,6 +26,21 @@
               required: false,
               help: 'The URL where this page can be found.'
             }, record && record.metadata.slug, errors.slug, { pages }) %>
+            <%- Form.field(`metadata[title]`, 'title', {
+              placeholder: record && record.defaultTitle,
+              required: false,
+              help: "This page's title, as will appear in search results."
+            }, record && record.metadata.title, errors.title, { pages }) %>
+            <%- Form.field(`metadata[description]`, 'description', {
+              placeholder: record && record.defaultDescription,
+              required: false,
+              help: "This page's description, as will appear in search results."
+            }, record && record.metadata.description, errors.description, { pages }) %>
+            <%- Form.field(`metadata[redirectUrl]`, 'redirectUrl', {
+              placeholder: record && record.redirectUrl,
+              required: false,
+              help: "Redirect this page to a new location."
+            }, record && record.metadata.redirectUrl, errors.redirectUrl, { pages }) %>
           </div>
         </div>
       </section>

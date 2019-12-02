@@ -37,7 +37,7 @@
     visibility: hidden;
 
     &.open {
-      height: 254px; // Magic number is magic. Make this work better.
+      height: 450px; // Magic number is magic. Make this work better.
       transition: height .28s, visibility 0s;
       visibility: visible;
     }
@@ -64,7 +64,9 @@
     }
 
     .metadata__split-section {
-      display: flex;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-gap: 0 2.4rem;
       .field { flex-grow: 1; }
       .field:not(:last-of-type) {
         margin-right: 1.2rem;
