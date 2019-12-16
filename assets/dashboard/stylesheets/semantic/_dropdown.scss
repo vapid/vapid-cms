@@ -584,7 +584,8 @@ select.ui.dropdown {
 .ui.search.dropdown > .text {
   cursor: text;
   position: relative;
-  left: 1px;
+  left: 5px;
+  top: 3px;
   z-index: 3;
 }
 
@@ -667,6 +668,9 @@ select.ui.dropdown {
 .ui.multiple.search.dropdown,
 .ui.multiple.search.dropdown > input.search {
   cursor: text;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* Selection Label */
@@ -681,6 +685,7 @@ select.ui.dropdown {
   font-size: 1em;
   padding: 0.35714286em 0.78571429em;
   margin: 0.14285714rem 0.28571429rem 0.14285714rem 0em;
+  line-height: 1.6rem;
   -webkit-box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
           box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
 }

@@ -150,23 +150,33 @@
 
   .field__choice {
     position: relative;
-    display: block;
+    display: flex;
+    flex-flow: column;
     padding: 0 0 0 3.2rem;
     border: 1px solid $grey-light;
     border-radius: 8px;
     user-select: none;
 
-    .checkbox {
+    .checkbox.checkbox--single {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       left: 1.4rem;
     }
 
+    .checkbox--multiple {
+      margin-left: -14px;
+    }
+
     > label {
       cursor: pointer;
       margin: 0;
       padding: 1.2rem;
+    }
+
+    .ui.dropdown {
+      width: calc(100% - 1.2rem);
+      margin-bottom: 1.2rem;
     }
   }
 
