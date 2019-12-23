@@ -56,7 +56,7 @@ const options = {
       [{ header: [2, 3, 4, 5, 6, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       ['link', 'blockquote', 'code-block'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ list: 'ordered' }, { list: 'bullet' }, { 'align': [] }],
     ],
     clipboard: {
       matchVisual: false,
