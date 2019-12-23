@@ -913,7 +913,6 @@
 }
 .ql-container.ql-bubble:not(.ql-disabled) a {
   position: relative;
-  white-space: nowrap;
 }
 .ql-container.ql-bubble:not(.ql-disabled) a::before {
   background-color: #444;
