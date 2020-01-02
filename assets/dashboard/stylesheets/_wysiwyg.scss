@@ -88,6 +88,9 @@
         margin-top: 0;
       }
     }
+    h6 {
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -110,4 +113,9 @@
       }
     }
   }
+}
+
+.ql-tooltip {
+  // Make sure the tooltip never falls behind anything.
+  z-index: 999999 !important;
 }

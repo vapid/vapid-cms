@@ -5,6 +5,7 @@
   "description": "A template-driven content management system",
   "repository": "vapid/vapid",
   "author": "Scott Robbin <scott@vapid.com>",
+  "main": "./lib/index",
   "bin": {
     "vapid": "./bin/cli.js"
   },
