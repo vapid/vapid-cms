@@ -1,6 +1,7 @@
 /* globals fetch, FormData, Node, document */
 const Quill = require('quill');
 const { QuillImage, QuillImageBindings } = require('quill-image');
+const { QuillHr, QuillHrBindings } = require('quill-hr');
 
 Quill.register('modules/quillImage', QuillImage);
 
@@ -8,7 +9,6 @@ const Break = Quill.import('blots/break');
 const Embed = Quill.import('blots/embed');
 
 async function imageHandler(_quill, id, b64Image, type = 'image/png') {
-
   // base64 to blob
   const blob = await fetch(b64Image).then(res => res.blob());
 
@@ -29,16 +29,11 @@ async function imageHandler(_quill, id, b64Image, type = 'image/png') {
 }
 
 class Linebreak extends Break {
-  length () {
-    return 1;
-  }
-
-  value () {
-    return '\n';
-  }
+  length () { return 1; }
+  value () { return '\n'; }
 
   insertInto(parent, ref) {
-    Embed.prototype.insertInto.call(this, parent, ref)
+    Embed.prototype.insertInto.call(this, parent, ref);
   }
 }
 
@@ -49,14 +44,12 @@ Quill.register(Linebreak);
 
 const options = {
   modules: {
-    quillImage: {
-      handler: imageHandler
-    },
     toolbar: [
-      [{ header: [2, 3, 4, 5, 6, false] }],
+      [{ font: [] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       ['link', 'blockquote', 'code-block'],
-      [{ list: 'ordered' }, { list: 'bullet' }, { 'align': [] }],
+      [{ align: [] }, { list: 'ordered' }, { list: 'bullet' }],
     ],
     clipboard: {
       matchVisual: false,
@@ -64,12 +57,13 @@ const options = {
     keyboard: {
       bindings: {
         ...QuillImageBindings,
+        ...QuillHrBindings,
         linebreak: {
           key: 13,
           shiftKey: true,
           handler(range) {
-            const currentLeaf = this.quill.getLeaf(range.index)[0]
-            const nextLeaf = this.quill.getLeaf(range.index + 1)[0]
+            const currentLeaf = this.quill.getLeaf(range.index)[0];
+            const nextLeaf = this.quill.getLeaf(range.index + 1)[0];
 
             this.quill.insertEmbed(range.index, 'linebreak', true, 'user');
 
@@ -81,7 +75,7 @@ const options = {
 
             // Now that we've inserted a line break, move the cursor forward
             this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
-          }
+          },
         },
       },
     },
@@ -89,35 +83,67 @@ const options = {
   theme: 'bubble',
 };
 
-document.addEventListener("turbolinks:load", () => {
+document.addEventListener('turbolinks:load', () => {
   const editors = document.querySelectorAll('.wysiwyg');
 
-  [].forEach.call(editors, (editor) => {
-    options.modules.toolbar[4] = editor.getAttribute('data-images') === 'true' ?
-      ['image'] : [];
+  for (const editor of editors) {
+    const _images = editor.getAttribute('data-images') === 'true';
 
     const quill = new Quill(editor, options);
     const input = editor.nextElementSibling;
+    const hrBlot = new QuillHr(quill);
+    const imgBlot = new QuillImage(quill, { handler: imageHandler });
+    const BlockMenu = editor.previousElementSibling;
+
+    BlockMenu.addEventListener('focusin', () => {
+      const range = quill.getSelection(false);
+      quill.setSelection(range, 'silent');
+    }, true);
+
+    /* eslint-disable no-loop-func */
+    BlockMenu.querySelector('.wysiwyg-blocks__block--hr').addEventListener('click', (evt) => {
+      hrBlot.insert();
+      evt.stopPropagation();
+      evt.preventDefault();
+      return false;
+    });
+
+    BlockMenu.querySelector('.wysiwyg-blocks__block--img').addEventListener('click', (evt) => {
+      imgBlot.insert();
+      evt.stopPropagation();
+      evt.preventDefault();
+      return false;
+    });
+
+    quill.on('editor-change', () => {
+      const range = quill.getSelection(false);
+      if (range == null) return true;
+      const [blot] = quill.getLine(range.index);
+      let showMenu = !blot.domNode.innerText.trim().length;
+      if (blot.isBlock) { showMenu = false; }
+      BlockMenu.classList.toggle('visible', showMenu);
+      if (showMenu) {
+        BlockMenu.style.top = `${blot.domNode.getBoundingClientRect().y - editor.getBoundingClientRect().y}px`;
+      }
+      return true;
+    });
 
     // Paste without text formatting
     quill.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
       delta.ops.map((op) => {
+        /* eslint-disable no-param-reassign */
         op.attributes = op.attributes || {};
         delete op.attributes.color;
         delete op.attributes.background;
+        return op;
+        /* eslint-enable no-param-reassign */
       });
       return delta;
-    })
+    });
 
     quill.on('text-change', (delta, oldDelta, source) => {
       const content = editor.firstChild.innerHTML
       input.value = content.replace(/^<p><br><\/p>/, '');
     });
-
-    editor.addEventListener('click', (e) => {
-      if (editor === e.target) {
-        quill.setSelection(quill.getLength());
-      }
-    }, false);
-  });
+  }
 });

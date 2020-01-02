@@ -5,6 +5,70 @@
   cursor: text;
 }
 
+.field__html {
+  position: relative;
+}
+
+.wysiwyg-blocks {
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: -4.0rem;
+  width: auto;
+  max-width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid #292d33;
+  border-radius: 3.2rem;
+  transform: translateY(2rem);
+  flex-flow: row;
+  flex-wrap: nowrap;
+  list-style: none;
+  overflow: hidden;
+  align-items: center;
+  box-sizing: content-box;
+  z-index: 999;
+  background: white;
+  transition: max-width .28s ease-in-out, visibility .15s ease-in-out, opacity .15s ease-in-out;
+
+  .wysiwyg-blocks__block {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin: 0 0.8rem;
+    font-size: 0;
+    color: transparent;
+    white-space: pre;
+  }
+}
+
+.wysiwyg-blocks::before {
+  content: "+";
+  font-size: 3.2rem;
+  width: 3.3rem;
+  height: 3.2rem;
+  line-height: 2.6rem;
+  text-align: center;
+  flex-shrink: 0;
+  font-weight: 200;
+  transform: rotate(0deg);
+  transition: transform .28s ease-in-out;
+}
+
+.wysiwyg-blocks.visible {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: visibility 0s, top 0s;
+}
+
+.wysiwyg-blocks:hover {
+  max-width: 50%;
+
+  &::before {
+    transform: rotate(45deg);
+  }
+}
+
 .ql-snow, .ql-bubble {
   a {
     color: #4A0C80;

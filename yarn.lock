@@ -8322,10 +8322,10 @@ quill-delta@^3.6.2:
     extend "^3.0.2"
     fast-diff "1.1.2"
 
-quill-image@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.6.tgz#7661abf6ae6172dc9ab6acd376b24ee666df8dce"
-  integrity sha512-QOnknjg5taNkj48nk29VSvZDgg8Ybmq3eJ0/ZcAHUf4zi3nr91D4rrutZIdVNUiMt+rCK65adVe6cNZ2JGHMUw==
+quill-image@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.8.tgz#2f62d4a7cab2ffac74dbecb2cccc6fd908d314d7"
+  integrity sha512-VgHK46jcZ4U7qnZoWLxhxDpbPsm67Sy0ttRo0vcd+XE/icmFlExHwqRYqpjIK02ukBJlj9loCfoNSj3qnKDjcw==
 
 quill@^1.3.6:
   version "1.3.7"
