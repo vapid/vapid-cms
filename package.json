@@ -70,7 +70,6 @@
     "lodash.merge": "^4.6.2",
     "markdown-it": "^8.4.1",
     "md5-file": "^4.0.0",
-    "memory-cache": "^0.2.0",
     "mini-css-extract-plugin": "^0.4.0",
     "mkdirp": "^0.5.1",
     "netrc": "^0.1.4",
