@@ -2,13 +2,18 @@
 const Quill = require('quill');
 const { QuillImage, QuillImageBindings } = require('quill-image');
 const { QuillHr, QuillHrBindings } = require('quill-hr');
+const { QuillButton, QuillButtonBindings } = require('quill-button');
+
+const hrBlot = new QuillHr(Quill);
+const imgBlot = new QuillImage(Quill, { handler: imageHandler });
+const buttonBlot = new QuillButton(Quill, { pages: [{ name: 'Test', url: 'https://universe.app' }] });
 
 Quill.register('modules/quillImage', QuillImage);
 
 const Break = Quill.import('blots/break');
 const Embed = Quill.import('blots/embed');
 
-async function imageHandler(_quill, id, b64Image, type = 'image/png') {
+async function imageHandler(id, b64Image, type = 'image/png') {
   // base64 to blob
   const blob = await fetch(b64Image).then(res => res.blob());
 
@@ -31,7 +36,6 @@ async function imageHandler(_quill, id, b64Image, type = 'image/png') {
 class Linebreak extends Break {
   length () { return 1; }
   value () { return '\n'; }
-
   insertInto(parent, ref) {
     Embed.prototype.insertInto.call(this, parent, ref);
   }
@@ -58,6 +62,7 @@ const options = {
       bindings: {
         ...QuillImageBindings,
         ...QuillHrBindings,
+        ...QuillButtonBindings,
         linebreak: {
           key: 13,
           shiftKey: true,
@@ -87,12 +92,8 @@ document.addEventListener('turbolinks:load', () => {
   const editors = document.querySelectorAll('.wysiwyg');
 
   for (const editor of editors) {
-    const _images = editor.getAttribute('data-images') === 'true';
-
     const quill = new Quill(editor, options);
     const input = editor.nextElementSibling;
-    const hrBlot = new QuillHr(quill);
-    const imgBlot = new QuillImage(quill, { handler: imageHandler });
     const BlockMenu = editor.previousElementSibling;
 
     BlockMenu.addEventListener('focusin', () => {
@@ -102,14 +103,21 @@ document.addEventListener('turbolinks:load', () => {
 
     /* eslint-disable no-loop-func */
     BlockMenu.querySelector('.wysiwyg-blocks__block--hr').addEventListener('click', (evt) => {
-      hrBlot.insert();
+      hrBlot.insert(quill);
       evt.stopPropagation();
       evt.preventDefault();
       return false;
     });
 
     BlockMenu.querySelector('.wysiwyg-blocks__block--img').addEventListener('click', (evt) => {
-      imgBlot.insert();
+      imgBlot.insert(quill);
+      evt.stopPropagation();
+      evt.preventDefault();
+      return false;
+    });
+
+    BlockMenu.querySelector('.wysiwyg-blocks__block--btn').addEventListener('click', (evt) => {
+      buttonBlot.insert(quill);
       evt.stopPropagation();
       evt.preventDefault();
       return false;
@@ -141,8 +149,8 @@ document.addEventListener('turbolinks:load', () => {
       return delta;
     });
 
-    quill.on('text-change', (delta, oldDelta, source) => {
-      const content = editor.firstChild.innerHTML
+    quill.on('text-change', () => {
+      const content = editor.querySelector('.ql-editor').innerHTML;
       input.value = content.replace(/^<p><br><\/p>/, '');
     });
   }
