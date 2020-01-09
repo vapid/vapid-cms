@@ -8286,10 +8286,10 @@ querystring@0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-quill-button@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/quill-button/-/quill-button-0.0.4.tgz#74b151e65fba5cfb880c2c2c0e6291e1e4f3de9c"
-  integrity sha512-JSWtPCOaHrNefuP/scEltYHWa2iOcdsIUxqwWfczf8KYb0vVlCtQikPsixMRdCJie7hlJQRPESNQPLWiFNZynw==
+quill-button@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/quill-button/-/quill-button-0.0.5.tgz#02b4807a7c50fc63ed0971f38e0959ac2f828cf3"
+  integrity sha512-9tZ8YeDCfozAvo3Gde34i8+DwZ6aDMC4wWt7EBOOpSvacWyy94pz98lgTLuEhl5+fL7jOeuLVy2RJ5ZM4PEMWw==
 
 quill-delta@^3.6.2:
   version "3.6.3"
@@ -8300,15 +8300,15 @@ quill-delta@^3.6.2:
     extend "^3.0.2"
     fast-diff "1.1.2"
 
-quill-hr@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/quill-hr/-/quill-hr-0.0.2.tgz#36a563ed00d3fc23a1084684132bcb67c622cb27"
-  integrity sha512-1atFomqRnd8FdGqXH+3BKUIGCfYz/A1aMgsix7zT+rA6FKRbljGn1gxMpk/Lr/Yv1ZgdHNZ1nVceTq8s8F6REw==
+quill-hr@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/quill-hr/-/quill-hr-0.0.3.tgz#14c60c25ae6fb0f159b651851683ad9d3bf956c4"
+  integrity sha512-rNCbOQdv9PyHomR9RFwHGDf3YD9i0lcW059j9wjFiASBxtL8Z7ZBS9J0ojxGGS2wO9UWY6gttC6bMXSMf4IhFA==
 
-quill-image@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.11.tgz#babb9795d6ab1ec72d7ea760064bca73cc23c045"
-  integrity sha512-SaFzbfw/dQBuSsyR0D4WYNapVtfvjdONvD/2oBQhNqIth5VF6/T745arFBhxzgvIm3ucRqQ0MDtkSLmfiqpqcg==
+quill-image@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.12.tgz#748efb78049f31aae6589667445f491d66e58362"
+  integrity sha512-WMuOw8AQvIaSSCvVKRCQzP4e98hbz9IqALw8v+MT8HpeAYznko0mhyasgTV2ZBvCAsCLGQP01nJAYAoZ7EHk7Q==
 
 quill@^1.3.6:
   version "1.3.7"
