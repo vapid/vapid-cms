@@ -8305,10 +8305,10 @@ quill-hr@^0.0.3:
   resolved "https://registry.yarnpkg.com/quill-hr/-/quill-hr-0.0.3.tgz#14c60c25ae6fb0f159b651851683ad9d3bf956c4"
   integrity sha512-rNCbOQdv9PyHomR9RFwHGDf3YD9i0lcW059j9wjFiASBxtL8Z7ZBS9J0ojxGGS2wO9UWY6gttC6bMXSMf4IhFA==
 
-quill-image@^0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.15.tgz#8efccfd9ee4fd181cd423971dfd33f9dfc7a3211"
-  integrity sha512-TgMkaC8APw5thn0pk1I/qb1LyZKhR6vpZzMQVjjtlFlYUYAxv9reVvl8OMxbiB28oWKnLQi17wTmspjNE4+fuQ==
+quill-image@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.16.tgz#08b68aa41504db359a29d8cd0a70b9c627c858c0"
+  integrity sha512-eL6fsdghfitI5ec1wTRnQIdgNQEUZn8B/WTUwFrcX39ju+oUFvwS5tCJuNBhNig5kwaMGC8S9aXkz77onGuK+g==
 
 quill@^1.3.6:
   version "1.3.7"
