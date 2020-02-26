@@ -8322,10 +8322,10 @@ quill-image@^0.0.18:
   resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.18.tgz#2f12f62a0cae62a2b2b7fa1236009b7738636817"
   integrity sha512-77IJMrd/YS09L00exQ1lAlP7wYNNI527JdEsEd0vTRWfkBHdRei9BC5DZ6VYlDbtYUNxoXFg1/I8ny1BadPERw==
 
-quill-video-embed@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/quill-video-embed/-/quill-video-embed-0.0.2.tgz#56fe254dd3671683637906345cc1fd7bf6b82365"
-  integrity sha512-KosXQ0P8DMl4yadWUCZbSoDXJOXrdCMYxhCGAR6rQsZEWx54WApa7dbHwOW3xQ6uy4If0JKDBWvKFw4MIPSYtQ==
+quill-video-embed@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/quill-video-embed/-/quill-video-embed-0.0.3.tgz#8ca3df38ed1beda0e5029c75c75f85ab66d13d83"
+  integrity sha512-IIjArMjBb9z1t0Plu9+Oe30IpfAb3OqfFFi/ZJJtQwepuFMrkEz63E4sJ5p6pzea3QY+Mzqj6nOmT7jinhhpYA==
   dependencies:
     get-video-id "^3.1.4"
 
