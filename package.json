@@ -84,7 +84,7 @@
     "quill-button": "^0.0.6",
     "quill-hr": "^0.0.3",
     "quill-image": "^0.0.18",
-    "quill-video-embed": "0.0.2",
+    "quill-video-embed": "0.0.3",
     "resolve-url-loader": "^2.3.0",
     "sanitize-html": "^1.18.2",
     "sass": "^1.14.3",
