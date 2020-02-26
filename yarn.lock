@@ -3968,6 +3968,11 @@ get-proxy@^2.0.0:
   dependencies:
     npm-conf "^1.1.0"
 
+get-src@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/get-src/-/get-src-1.0.1.tgz#ca11dbe4a93c7f3aa85cec95fcb0b2dfaa9539ee"
+  integrity sha1-yhHb5Kk8fzqoXOyV/LCy36qVOe4=
+
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
@@ -3997,6 +4002,13 @@ get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
+
+get-video-id@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/get-video-id/-/get-video-id-3.1.4.tgz#9bffb8b607aa0379f0f8a927eae7df13b5e414a3"
+  integrity sha512-XOZ60NZ60ozTtoWtPPpA3TC9JgDXgcd5nTfYwjBhZWAx3w48HRq6EqKp2bUJ/3F+BWgiMMHg4IkQ+acO6LxfMQ==
+  dependencies:
+    get-src "^1.0.1"
 
 getpass@^0.1.1:
   version "0.1.7"
@@ -8305,10 +8317,17 @@ quill-hr@^0.0.3:
   resolved "https://registry.yarnpkg.com/quill-hr/-/quill-hr-0.0.3.tgz#14c60c25ae6fb0f159b651851683ad9d3bf956c4"
   integrity sha512-rNCbOQdv9PyHomR9RFwHGDf3YD9i0lcW059j9wjFiASBxtL8Z7ZBS9J0ojxGGS2wO9UWY6gttC6bMXSMf4IhFA==
 
-quill-image@^0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.17.tgz#ec5852d951ee4eeca00e49accf6386edb5c65089"
-  integrity sha512-ftTNZyscdepAnAlnKCD6FDbougVRCrRkKM+LyuD7TXUGxtwTP7uGyOxRR3sRItGDJtO13xvxPayvUaWXqFZxZQ==
+quill-image@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.18.tgz#2f12f62a0cae62a2b2b7fa1236009b7738636817"
+  integrity sha512-77IJMrd/YS09L00exQ1lAlP7wYNNI527JdEsEd0vTRWfkBHdRei9BC5DZ6VYlDbtYUNxoXFg1/I8ny1BadPERw==
+
+quill-video-embed@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/quill-video-embed/-/quill-video-embed-0.0.1.tgz#8a3afb03f524daa961b1f1e8d87c5f2eabbae1bf"
+  integrity sha512-Km2OXIiNGQlSe6k9K0aC8rM4UAiRLHySvI/QqwyuuenDbfu2JIpiHwIbE2Yjl1E8JdLTXoaeNAlh34LgKTnCMg==
+  dependencies:
+    get-video-id "^3.1.4"
 
 quill@^1.3.6:
   version "1.3.7"

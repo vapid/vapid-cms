@@ -3,10 +3,12 @@ const Quill = require('quill');
 const { QuillImage, QuillImageBindings } = require('quill-image');
 const { QuillHr, QuillHrBindings } = require('quill-hr');
 const { QuillButton, QuillButtonBindings } = require('quill-button');
+const { QuillVideo, QuillVideoBindings } = require('quill-video-embed');
 
 const hrBlot = new QuillHr(Quill);
 const imgBlot = new QuillImage(Quill, { handler: imageHandler });
 const buttonBlot = new QuillButton(Quill, { pages: [{ name: 'Test', url: 'https://universe.app' }] });
+const videoBlot = new QuillVideo(Quill, { pages: [{ }] });
 
 Quill.register('modules/quillImage', QuillImage);
 
@@ -63,6 +65,7 @@ const options = {
         ...QuillImageBindings,
         ...QuillHrBindings,
         ...QuillButtonBindings,
+        ...QuillVideoBindings,
         linebreak: {
           key: 13,
           shiftKey: true,
@@ -118,6 +121,13 @@ document.addEventListener('turbolinks:load', () => {
 
     BlockMenu.querySelector('.wysiwyg-blocks__block--btn').addEventListener('click', (evt) => {
       buttonBlot.insert(quill);
+      evt.stopPropagation();
+      evt.preventDefault();
+      return false;
+    });
+
+    BlockMenu.querySelector('.wysiwyg-blocks__block--video').addEventListener('click', (evt) => {
+      videoBlot.insert(quill);
       evt.stopPropagation();
       evt.preventDefault();
       return false;
