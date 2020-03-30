@@ -121,3 +121,7 @@
   // Make sure the tooltip never falls behind anything.
   z-index: 999999 !important;
 }
+
+.ql-tooltip select {
+  display: none;
+}
