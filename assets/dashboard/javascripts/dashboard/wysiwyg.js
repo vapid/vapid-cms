@@ -10,8 +10,6 @@ const imgBlot = new QuillImage(Quill, { handler: imageHandler });
 const buttonBlot = new QuillButton(Quill, { pages: [{ name: 'Test', url: 'https://universe.app' }] });
 const videoBlot = new QuillVideo(Quill, { pages: [{ }] });
 
-Quill.register('modules/quillImage', QuillImage);
-
 const Break = Quill.import('blots/break');
 const Embed = Quill.import('blots/embed');
 
@@ -146,20 +144,9 @@ document.addEventListener('turbolinks:load', () => {
       return true;
     });
 
-    // Paste without text formatting
-    quill.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
-      delta.ops.map((op) => {
-        /* eslint-disable no-param-reassign */
-        op.attributes = op.attributes || {};
-        delete op.attributes.color;
-        delete op.attributes.background;
-        return op;
-        /* eslint-enable no-param-reassign */
-      });
-      return delta;
-    });
-
     quill.on('text-change', () => {
+      const els = [...editor.querySelectorAll('[style]')];
+      for (const el of els) { el.removeAttribute('style'); }
       const content = editor.querySelector('.ql-editor').innerHTML;
       input.value = content.replace(/^<p><br><\/p>/, '');
     });

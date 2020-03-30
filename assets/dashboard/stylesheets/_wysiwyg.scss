@@ -75,6 +75,8 @@
   }
 
   .ql-editor {
+    overflow: visible !important;
+
     p,
     ol, ul,
     blockquote,
