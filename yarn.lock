@@ -8298,10 +8298,10 @@ querystring@0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-quill-button@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/quill-button/-/quill-button-0.0.6.tgz#4d5c1bfd835b26c8a013bc4d49353b14f5e71894"
-  integrity sha512-Q1+PiFma+Wbpk08C3W+jcT+n8nnBFxVE1J//e6p3ureEVjjbGHpAXuavGCh7Qt/Rf0THHP964RQ4krfGw2dXYA==
+quill-button@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/quill-button/-/quill-button-0.0.7.tgz#bada9d810895cd49f81b2db4867a4a7f427414f4"
+  integrity sha512-qkyXXZ8QDbnIRxlR4M50AMloHoxfj5a6EAMLE086d4VbTDX+NRKaN8Q0DSt7l4/6LV12p4MOyXRksl5UgHnhCg==
 
 quill-delta@^3.6.2:
   version "3.6.3"
@@ -8312,20 +8312,20 @@ quill-delta@^3.6.2:
     extend "^3.0.2"
     fast-diff "1.1.2"
 
-quill-hr@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/quill-hr/-/quill-hr-0.0.3.tgz#14c60c25ae6fb0f159b651851683ad9d3bf956c4"
-  integrity sha512-rNCbOQdv9PyHomR9RFwHGDf3YD9i0lcW059j9wjFiASBxtL8Z7ZBS9J0ojxGGS2wO9UWY6gttC6bMXSMf4IhFA==
-
-quill-image@^0.0.18:
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.18.tgz#2f12f62a0cae62a2b2b7fa1236009b7738636817"
-  integrity sha512-77IJMrd/YS09L00exQ1lAlP7wYNNI527JdEsEd0vTRWfkBHdRei9BC5DZ6VYlDbtYUNxoXFg1/I8ny1BadPERw==
-
-quill-video-embed@^0.0.4:
+quill-hr@^0.0.4:
   version "0.0.4"
-  resolved "https://registry.yarnpkg.com/quill-video-embed/-/quill-video-embed-0.0.4.tgz#ea90a28ca32ba1a7bf7d793a473cf8d4a7bbadb9"
-  integrity sha512-rtfjneLqCVO2jcKRU6unDH31S058l1J9xq67e1SxuBX8iecoY7QbD+bGXJLLzY4W2u6btTvGk6qQRPtB/3v2EQ==
+  resolved "https://registry.yarnpkg.com/quill-hr/-/quill-hr-0.0.4.tgz#f551fdaeb6d943f6be9b7840e3a552467b492778"
+  integrity sha512-MBlgvomDHfBy94zsp1U2mj17oXm7jhY+sIh6maM1MfAf1bvaAVa4zxZotbb0+SN+WxeYLbQF8tdvUqepDodx7g==
+
+quill-image@^0.0.19:
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/quill-image/-/quill-image-0.0.19.tgz#94a45d0d2fc30318e10ae0672fdb40b9a146a9ca"
+  integrity sha512-09piEL8FcSKnbrTEJQIzFeHhgy0n3edIAEBltEJN83hexwMAL9ff38Kx5cG7Fe8nenTyNFUoGY2lyH5k2DGjMQ==
+
+quill-video-embed@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/quill-video-embed/-/quill-video-embed-0.0.5.tgz#a9171151c6c1136051b9170e9df8d439b895f6af"
+  integrity sha512-dIL9NUs2wWSKo33ybNupbSpUOBH5MTiZ6NoOamamZLZtP5xJwuTdPtFXLBbbLWoxqmrPq2nHkJPxwH4MOxbxMw==
   dependencies:
     get-video-id "^3.1.4"
 
