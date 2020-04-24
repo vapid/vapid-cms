@@ -33,7 +33,7 @@
               help: 'The URL where this page can be found.',
               type: 'url',
               prefix: '/' + (record.template.type === 'collection' ? (record.template.name + '/') : ''),
-            }, record && record.metadata.slug, errors.slug, { pages }) %>
+            }, record && record.safeSlug, errors.slug, { pages }) %>
             <%- Form.field(`metadata[title]`, 'title', {
               default: record && record.defaultTitle,
               required: false,
