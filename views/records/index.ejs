@@ -17,45 +17,45 @@
 </div>
 
 <section class="section">
-  <div class="wide content">
-    <% if (page) { %>
-      <form class="form" action="/dashboard/pages/<%- page.template.name %>/records/<%- page.id %>" method="post" enctype="multipart/form-data" data-autosave="true" novalidate>
-        <section class="metadata">
-          <div class="content">
-            <h3>Page Settings</h3>
-            <div class="metadata__split-section">
-              <%- Form.field(`metadata[name]`, 'name', {
-                default: page && page.defaultName,
-                required: false,
-                help: 'Human readable name used for site navigation.'
-              }, (page) ? page.metadata.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]'], { pages }) %>
-              <%- Form.field(`metadata[slug]`, 'slug', {
-                default: page && page.defaultSlug,
-                required: false,
-                help: 'The URL where this page can be found.'
-              }, page && page.metadata.slug, errors.slug, { pages }) %>
-              <%- Form.field(`metadata[title]`, 'title', {
-                default: page && page.defaultTitle,
-                required: false,
-                help: "This page's title, as will appear in search results."
-              }, page && page.metadata.title, errors.title, { pages }) %>
-              <%- Form.field(`metadata[description]`, 'description', {
-                default: page && page.defaultDescription,
-                required: false,
-                help: "This page's description, as will appear in search results."
-              }, page && page.metadata.description, errors.description, { pages }) %>
-              <%- Form.field(`metadata[redirectUrl]`, 'redirectUrl', {
-                default: page && page.redirectUrl,
-                required: false,
-                help: "Redirect this page to a new location."
-              }, page && page.metadata.redirectUrl, errors.redirectUrl, { pages }) %>
-            </div>
-            <input type="hidden" name="_csrf" value="<%- csrf %>">
-            <input type="submit" class="button">
+  <% if (page) { %>
+    <form class="form" action="/dashboard/pages/<%- page.template.name %>/records/<%- page.id %>" method="post" enctype="multipart/form-data" data-autosave="true" novalidate>
+      <section class="metadata">
+        <div class="content">
+          <h3>Page Settings</h3>
+          <div class="metadata__split-section">
+            <%- Form.field(`metadata[name]`, 'name', {
+              default: page && page.defaultName,
+              required: false,
+              help: 'Human readable name used for site navigation.'
+            }, (page) ? page.metadata.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]'], { pages }) %>
+            <%- Form.field(`metadata[slug]`, 'slug', {
+              default: page && page.defaultSlug,
+              required: false,
+              help: 'The URL where this page can be found.'
+            }, page && page.metadata.slug, errors.slug, { pages }) %>
+            <%- Form.field(`metadata[title]`, 'title', {
+              default: page && page.defaultTitle,
+              required: false,
+              help: "This page's title, as will appear in search results."
+            }, page && page.metadata.title, errors.title, { pages }) %>
+            <%- Form.field(`metadata[description]`, 'description', {
+              default: page && page.defaultDescription,
+              required: false,
+              help: "This page's description, as will appear in search results."
+            }, page && page.metadata.description, errors.description, { pages }) %>
+            <%- Form.field(`metadata[redirectUrl]`, 'redirectUrl', {
+              default: page && page.redirectUrl,
+              required: false,
+              help: "Redirect this page to a new location."
+            }, page && page.metadata.redirectUrl, errors.redirectUrl, { pages }) %>
           </div>
-        </section>
-      </form>
-    <% } %>
+          <input type="hidden" name="_csrf" value="<%- csrf %>">
+          <input type="submit" class="button">
+        </div>
+      </section>
+    </form>
+  <% } %>
+  <div class="wide content">
     <a href="/dashboard/<%- template.typePlural %>/<%- template.name %>/records/new" class="small button button--right">New <%- template.labelSingular %></a>
     <table class="preview table <%- tableAction %>">
       <thead>

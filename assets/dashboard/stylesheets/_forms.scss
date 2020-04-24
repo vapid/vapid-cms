@@ -337,5 +337,36 @@
   .ui.label:hover {
     text-decoration: none;
   }
+
+  .input__url {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+
+    span {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem 1rem 1.1rem;
+      border: 1px solid #c9d4e3;
+      border-radius: 2px;
+      box-sizing: border-box;
+      background: white;
+      width: fit-content;
+      padding-right: 0;
+      border-right: transparent;
+      height: 4rem;
+      border-radius: 2px 0 0 2px;
+      position: relative;
+      z-index: 1;
+      color: black;
+    }
+
+    input {
+      padding-left: 0;
+      border-left: transparent;
+      border-radius: 0 2px 2px 0;
+    }
+  }
 }
 

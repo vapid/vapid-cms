@@ -30,7 +30,9 @@
             <%- Form.field(`metadata[slug]`, 'slug', {
               default: record && record.defaultSlug,
               required: false,
-              help: 'The URL where this page can be found.'
+              help: 'The URL where this page can be found.',
+              type: 'url',
+              prefix: '/' + (record.template.type === 'collection' ? (page.template.name + '/') : ''),
             }, record && record.metadata.slug, errors.slug, { pages }) %>
             <%- Form.field(`metadata[title]`, 'title', {
               default: record && record.defaultTitle,

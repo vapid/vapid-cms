@@ -46,21 +46,8 @@
       float: right;
     }
 
-    input[name='metadata[slug]'] {
-      background-image: linear-gradient(-73deg, transparent 0px, transparent 6px, black 7px, transparent 8px);
-      background-size: 13px 13px;
-      background-position: top left;
-      background-repeat: no-repeat;
-      background-position: 7px center;
-      padding-left: 1.8rem;
-    }
-
     input[name='metadata[slug]']::placeholder {
       color: rgb(152, 168, 185);
-    }
-
-    input[name='metadata[slug]']:placeholder-shown {
-      background-image: linear-gradient(-73deg, transparent 0px, transparent 6px, rgb(152, 168, 185) 7px, transparent 8px);
     }
 
     h3 {
