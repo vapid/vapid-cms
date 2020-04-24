@@ -6,7 +6,7 @@
 <section class="section page-templates">
   <h2 class="page-templates__header">Select a Page Template</h2>
   <ul class="page-templates__list">
-    <% for (template of templates) { %>
+    <% for (template of templates) { if (!template.hasView || template.collection) { continue; } %>
       <li class="page-templates__template">
         <a href="/dashboard/pages/<%- template.name %>/records/new"><%- template.name === 'index' ? 'Home' : template.name %></a>
       </li>

@@ -10,6 +10,12 @@
     outline: none;
   }
 
+  .wysiwyg::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   input:not(.button),
   textarea {
     display: block;

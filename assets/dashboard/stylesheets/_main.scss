@@ -13,7 +13,34 @@ main {
     &, h1 {
       font-size: 2.4rem;
     }
+    .sub-menu {
+      display: flex;
+      list-style: none;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: -1.6rem;
+      margin-top: 2.4rem;
 
+      li {
+        flex-grow: 1;
+      }
+      a {
+        display: block;
+        color: $grey-dark;
+        padding: 0.6rem;
+        border-radius: 0.8rem 0.8rem 0 0;
+        margin: 0 4.4rem;
+        transition: background-color .15s ease-in-out, color .15s ease-in-out;
+        background-color: $grey-lighter;
+      }
+      a.active, a:hover {
+        background-color: $grey-darkerer;
+        color: white;
+        text-decoration: none;;
+      }
+    }
     .menu {
       list-style: none;
       font-size: 1.2rem;

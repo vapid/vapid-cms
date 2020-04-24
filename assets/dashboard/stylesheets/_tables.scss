@@ -32,8 +32,10 @@
 
   &.preview {
     img {
-      width: auto;
-      height: 60px;
+      width: 8.2rem;
+      height: 8.2rem;
+      object-fit: cover;
+      object-position: center;
     }
   }
 

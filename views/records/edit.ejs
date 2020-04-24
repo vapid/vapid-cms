@@ -7,6 +7,12 @@
       <li><button class="small button" id="page-settings">Settings</button></li>
     </ul>
   <% } %>
+  <% if (collection && page) { %>
+    <ul class="sub-menu">
+      <li><a href="/dashboard/pages/<%- page.safeSlug %>" class="<%- (template.type === 'page' ? 'active' : '') %>">Page</a></li>
+      <li><a href="/dashboard/collection/<%- template.name %>" class="<%- (template.type === 'collection' ? 'active' : '') %>">Records</a></li>
+    </ul>
+  <% } %>
 </h1>
 
 <section class="section">
@@ -17,27 +23,27 @@
           <h3>Page Settings</h3>
           <div class="metadata__split-section">
             <%- Form.field(`metadata[name]`, 'name', {
-              placeholder: record && record.defaultName,
+              default: record && record.defaultName,
               required: false,
               help: 'Human readable name used for site navigation.'
             }, (record) ? record.metadata.name : '', errors.hasOwnProperty('metadata[name]') && errors['metadata[name]'], { pages }) %>
             <%- Form.field(`metadata[slug]`, 'slug', {
-              placeholder: record && record.defaultSlug,
+              default: record && record.defaultSlug,
               required: false,
               help: 'The URL where this page can be found.'
             }, record && record.metadata.slug, errors.slug, { pages }) %>
             <%- Form.field(`metadata[title]`, 'title', {
-              placeholder: record && record.defaultTitle,
+              default: record && record.defaultTitle,
               required: false,
               help: "This page's title, as will appear in search results."
             }, record && record.metadata.title, errors.title, { pages }) %>
             <%- Form.field(`metadata[description]`, 'description', {
-              placeholder: record && record.defaultDescription,
+              default: record && record.defaultDescription,
               required: false,
               help: "This page's description, as will appear in search results."
             }, record && record.metadata.description, errors.description, { pages }) %>
             <%- Form.field(`metadata[redirectUrl]`, 'redirectUrl', {
-              placeholder: record && record.redirectUrl,
+              default: record && record.redirectUrl,
               required: false,
               help: "Redirect this page to a new location."
             }, record && record.metadata.redirectUrl, errors.redirectUrl, { pages }) %>

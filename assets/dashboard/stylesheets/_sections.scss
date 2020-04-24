@@ -37,9 +37,13 @@
     visibility: hidden;
 
     &.open {
-      height: 450px; // Magic number is magic. Make this work better.
+      height: 52rem; // Magic number is magic. Make this work better.
       transition: height .28s, visibility 0s;
       visibility: visible;
+    }
+
+    input[type=submit] {
+      float: right;
     }
 
     input[name='metadata[slug]'] {

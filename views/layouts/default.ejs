@@ -42,15 +42,15 @@
             <div class="header">Pages</div>
             <div class="menu sortable">
               <% pages.forEach(s => { if (!s.isNavigation) { return; }%>
-              <a href="/dashboard/pages/<%- s.slug %>/" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
-                <%- include(`../../assets/dashboard/images/page.svg`) %>
+              <a href="/dashboard/pages/<%- s.slug %>" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
+                <%- s.hasCollection ? include(`../../assets/dashboard/images/collection.svg`) : include(`../../assets/dashboard/images/page.svg`) %>
                 <%- s.name %>
               </a>
               <% }) %>
               <hr class="sidebar__divider" />
               <% pages.forEach(s => { if (s.isNavigation) { return; } %>
-                <a href="/dashboard/pages/<%- s.slug %>/" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
-                  <%- include(`../../assets/dashboard/images/page.svg`) %>
+                <a href="/dashboard/pages/<%- s.slug %>" data-id="<%- s.id %>" class="<% if (typeof record !== 'undefined' && s.id == record.id) { %>active <% } %>item">
+                  <%- s.hasCollection ? include(`../../assets/dashboard/images/collection.svg`) : include(`../../assets/dashboard/images/page.svg`) %>
                   <%- s.name %>
                 </a>
               <% }) %>
@@ -62,8 +62,8 @@
           <div class="item">
             <div class="header">Collections</div>
             <div class="menu">
-              <% collections.forEach(s => { %>
-                <a href="/dashboard/collections/<%- s.name %>/" class="<% if (typeof template !== 'undefined' && s.id == template.id) { %>active <% } %>item">
+              <% collections.forEach(s => { if (s.hasPage) { return } %>
+                <a href="/dashboard/collection/<%- s.name %>" class="<% if (typeof template !== 'undefined' && s.id == template.id) { %>active <% } %>item">
                   <%- include(`../../assets/dashboard/images/collection.svg`) %>
                   <%- s.label %>
                 </a>
