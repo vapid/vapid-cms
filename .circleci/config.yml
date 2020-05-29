@@ -31,7 +31,7 @@ jobs:
   build:
     <<: *node-base
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:12
   build-10:
     <<: *node-base
     docker:

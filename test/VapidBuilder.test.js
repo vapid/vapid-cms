@@ -16,7 +16,7 @@ describe('VapidBuilder', () => {
     const outputDir = tmp.tmpNameSync();
     await builder.build(outputDir);
 
-    const fileList = (await recursive(outputDir)).map(f => relative(outputDir, f)).sort();
+    const fileList = (await recursive(outputDir)).map((f) => relative(outputDir, f)).sort();
     expect(fileList).toEqual([
       'about.html',
       'contact.html',

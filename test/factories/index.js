@@ -21,7 +21,7 @@ Object.keys(db.models).forEach((modelName) => {
   module.exports[factoryName] = async (props = {}, options = {}) => {
     /* eslint-disable-next-line global-require, import/no-dynamic-require */
     const defaultProps = require(join(__dirname, modelName.toLowerCase()))();
-    const data = Object.assign({}, defaultProps, props);
+    const data = { ...defaultProps, ...props };
 
     await db.connect();
     return db.models[modelName].create(data, options);
