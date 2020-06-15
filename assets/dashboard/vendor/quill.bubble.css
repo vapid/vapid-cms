@@ -92,18 +92,23 @@
   content: '\2610';
 }
 .ql-editor li::before {
-  display: inline-block;
+  display: inline-flex;
   white-space: nowrap;
-  width: 1.2em;
+  content: "•";
+  font-size: 1.5em;
+  line-height: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 1em;
+  width: 1em;
 }
 .ql-editor li:not(.ql-direction-rtl)::before {
-  margin-left: -1.5em;
-  margin-right: 0.3em;
+  margin-left: -1em;
   text-align: right;
 }
 .ql-editor li.ql-direction-rtl::before {
-  margin-left: 0.3em;
-  margin-right: -1.5em;
+  margin-right: -1em;
 }
 .ql-editor ol li:not(.ql-direction-rtl),
 .ql-editor ul li:not(.ql-direction-rtl) {
@@ -595,19 +600,19 @@
   font-size: 2em;
 }
 .ql-bubble .ql-editor h2 {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 .ql-bubble .ql-editor h3 {
-  font-size: 1.17em;
+  font-size: 1.6em;
 }
 .ql-bubble .ql-editor h4 {
-  font-size: 1em;
+  font-size: 1.4em;
 }
 .ql-bubble .ql-editor h5 {
-  font-size: 0.83em;
+  font-size: 1.2em;
 }
 .ql-bubble .ql-editor h6 {
-  font-size: 0.67em;
+  font-size: 1em;
 }
 .ql-bubble .ql-editor a {
   text-decoration: underline;

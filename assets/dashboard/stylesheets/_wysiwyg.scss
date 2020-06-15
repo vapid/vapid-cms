@@ -77,21 +77,22 @@
   .ql-editor {
     overflow: visible !important;
 
+    ul, ol {
+      margin-bottom: 0.4rem;
+    }
+
     p,
     ol, ul,
     blockquote,
     pre,
     h1, h2, h3, 
     h4, h5, h6 {
-      margin: 0 0 1em;
-      line-height: 1.2em;
+      margin: 0 0 1.2rem;
+      line-height: 1.2;
 
       &:first-child {
         margin-top: 0;
       }
-    }
-    h6 {
-      text-transform: uppercase;
     }
   }
 }
