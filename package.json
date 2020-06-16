@@ -35,10 +35,9 @@
     ]
   },
   "dependencies": {
-    "@cannery/hoist": "^0.0.3",
+    "@cannery/hoist": "^0.0.13",
     "@hapi/boom": "^7.4.2",
     "ace-builds": "^1.4.3",
-    "animated-gif-detector": "^1.2.0",
     "aws4": "^1.7.0",
     "bcrypt": "^3.0.3",
     "colors": "^1.1.2",
@@ -90,7 +89,6 @@
     "sass": "^1.14.3",
     "sass-loader": "^7.1.0",
     "sequelize": "^5.21.2",
-    "sharp": "^0.23.4",
     "sqlite3": "^4.1.0",
     "strftime": "^0.10.0",
     "style-loader": "^0.20.3",
