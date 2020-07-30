@@ -1,3 +1,27 @@
+body {
+  --white: #f1f3f8;
+  --black: #2C2C31;
+  --light-blue: #a6b6c4;
+  --blue: #2E71B2;
+  --dark-blue: #132f53;
+  --light-red: #e995a7;
+  --red: #E4264F;
+  --dark-red: #420b17;
+  --green: #059456;
+  --light-yellow: #e9c195;
+  --yellow: #FAA040;
+  --light-gray: rgba(0,0,0,.1);
+  --gray: rgba(0,0,0,.55);
+  --purple: #373a5e;
+  --dark-purple: rgb(35, 37, 63);
+
+  --elevation-0: 0 0 0 1px rgba(0, 0, 0, 0.01);
+  --elevation-2: 0 0 0 1px rgba(0, 0, 0, 0.01), 0 2px 3px rgba(0, 0, 0, 0.1);
+  --elevation-4: 0 0 0 1px rgba(0, 0, 0, 0.01), 0 4px 6px rgba(0, 0, 0, 0.1);
+  --elevation-6: 0 0 0 1px rgba(0, 0, 0, 0.01), 0 6px 9px rgba(0, 0, 0, 0.1);
+  --elevation-12: 0 0 0 1px rgba(0, 0, 0, 0.01), 0 12px 18px 1px rgba(0, 0, 0, 0.1);
+}
+
 @import "variables";
 @import "mixins";
 @import "animations";
@@ -28,3 +52,86 @@
 
 // Flatpickr
 @import "~flatpickr/dist/flatpickr.min";
+
+#edit-image-button {
+  position: absolute;
+  z-index: 999;
+  color: white;
+  background: rgba(0,0,0,.85);
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.2rem;
+  border: 0;
+  font-weight: 800;
+  bottom: 1.2rem;
+  left: 1.2rem;
+}
+
+.tui-image-editor-header {
+  display: none;
+}
+
+.tui-image-editor-main, .tui-image-editor-wrap {
+  overflow: hidden;
+}
+
+.tui-image-editor-container .tui-image-editor-menu {
+  display: flex;
+  flex-flow: column-reverse;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.image-editor {
+  position: fixed;
+  width: calc(100vw - 8.4rem);
+  height: calc(100vh - 8.4rem);
+  top: 4.2rem;
+  left: 4.2rem;
+  border-radius: 1.2rem;
+  box-shadow: var(--elevation-12), 0 0 0 8.4rem rgba(0,0,0,.55);
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .15s, opacity .15s;
+  transition-delay: visibility .15s, opacity 0s;
+  overflow: hidden;
+}
+
+.image-editor.image-editor--visible {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: visibility 0s, opacity 0s;
+}
+
+.image-editor.image-editor--visible ~ * {
+  pointer-events: none;
+}
+
+.image-editor__save {
+  position: absolute;
+  top: 1.2rem;
+  background: var(--green);
+  z-index: 3;
+  padding: 1.2rem 2.4rem;
+  border-radius: 1.2rem;
+  border: 0;
+  right: 1.2rem;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.image-editor__discard {
+  position: absolute;
+  top: 1.2rem;
+  background: var(--red);
+  z-index: 3;
+  padding: 1.2rem 2.4rem;
+  border-radius: 1.2rem;
+  border: 0;
+  right: 10.2rem;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}

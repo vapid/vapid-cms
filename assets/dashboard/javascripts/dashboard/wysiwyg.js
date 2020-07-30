@@ -1,9 +1,10 @@
-/* globals fetch, FormData, Node, document */
+/* globals document */
 const Quill = require('quill');
 const { QuillImage, QuillImageBindings } = require('quill-image');
 const { QuillHr, QuillHrBindings } = require('quill-hr');
 const { QuillButton, QuillButtonBindings } = require('quill-button');
 const { QuillVideo, QuillVideoBindings } = require('quill-video-embed');
+const imageHandler = require('./imageHandler');
 
 const hrBlot = new QuillHr(Quill);
 const imgBlot = new QuillImage(Quill, { handler: imageHandler });
@@ -13,29 +14,9 @@ const videoBlot = new QuillVideo(Quill, { pages: [{ }] });
 const Break = Quill.import('blots/break');
 const Embed = Quill.import('blots/embed');
 
-async function imageHandler(id, b64Image, type = 'image/png') {
-  // base64 to blob
-  const blob = await fetch(b64Image).then(res => res.blob());
-
-  const filename = [id, '.', type.match(/^image\/(\w+)$/i)[1]].join('');
-
-  // generate a form data
-  const formData = new FormData();
-  formData.set('file', blob, filename);
-  formData.set('_csrf', document.getElementsByName('_csrf')[0].value);
-
-  const res = await fetch('/dashboard/upload', {
-    method: 'POST',
-    body: formData,
-  }).then(r => r.json());
-
-  if (res.status !== 'success') { throw new Error(res.message); }
-  return res.data.url;
-}
-
 class Linebreak extends Break {
-  length () { return 1; }
-  value () { return '\n'; }
+  length() { return 1; }
+  value() { return '\n'; }
   insertInto(parent, ref) {
     Embed.prototype.insertInto.call(this, parent, ref);
   }

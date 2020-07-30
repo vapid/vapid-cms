@@ -20,6 +20,52 @@ require('./dashboard/sortable');
 require('./dashboard/websocket');
 require('./dashboard/wysiwyg');
 
+const imageHandler = require('./dashboard/imageHandler');
+
+const ImageEditor = require('tui-image-editor');
+
+// TODO: Add instagram like filters somehow
+// https://una.im/CSSgram/
+// http://camanjs.com/guides/#BasicUsage
+let imageEditor = null;
+async function ensureEditor(path) {
+  if (imageEditor) {
+    await imageEditor.loadImageFromURL(path, 'image').then((res) => console.log(res));
+    return imageEditor;
+  }
+  const container = document.getElementById('tui-image-editor');
+  imageEditor = new ImageEditor(container, {
+    usageStatistics: false,
+    includeUI: {
+      loadImage: {
+        path,
+        name: 'blank',
+      },
+      menuBarPosition: 'left',
+      uiSize: {
+        width: 'calc(100vw - 8.4rem)',
+        height: 'calc(100vh - 8.4rem)',
+      },
+    },
+    cssMaxHeight: window.innerHeight - 160,
+    cssMaxWidth: window.innerWidth - 160,
+    selectionStyle: {
+      cornerSize: 20,
+      rotatingPointOffset: 70,
+    },
+  });
+
+  return imageEditor;
+}
+
+async function editImage(path) {
+  if (!path) { return; }
+  const editor = await ensureEditor(path);
+  editor.clearRedoStack();
+  editor.clearUndoStack();
+  document.getElementById('image-editor').classList.add('image-editor--visible');
+}
+
 // CSRF
 $.ajaxSetup({
   headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -38,11 +84,36 @@ const autoExpand = (field) => {
   field.style.height = `${height}px`;
 };
 
+// https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+const rand = window.crypto.getRandomValues.bind(window.crypto);
+const uuid = () => ('' + 1e7 + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (+c ^ rand(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16));
+
 const init = () => {
   [...document.querySelectorAll('textarea')].map(autoExpand);
   const settingsButton = document.getElementById('page-settings');
   settingsButton && settingsButton.addEventListener('click', () => {
     document.querySelector('.metadata').classList.toggle('open');
+  });
+
+  let editingName = null;
+  document.body.addEventListener('click', (evt) => {
+    if (evt.target.id !== 'edit-image-button') { return; }
+    editingName = evt.target.dataset.name;
+    evt.stopImmediatePropagation();
+    evt.preventDefault();
+    editImage(evt.target.parentElement.querySelector('img').getAttribute('src'));
+  });
+
+  document.getElementById('image-editor-discard').addEventListener('click', () => {
+    document.getElementById('image-editor').classList.remove('image-editor--visible');
+  });
+
+  document.getElementById('image-editor-save').addEventListener('click', async () => {
+    const data = imageEditor.toDataURL();
+    const url = await imageHandler(uuid(), data);
+    document.querySelector(`[id="${editingName}"]`).src = url;
+    document.querySelector(`input[type="hidden"][name="${editingName}"]`).value = url.replace('/uploads/', '');
+    document.getElementById('image-editor').classList.remove('image-editor--visible');
   });
 
   for (const link of [...document.querySelectorAll('.field__link')]) {

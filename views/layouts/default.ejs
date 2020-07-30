@@ -8,11 +8,16 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="csrf-token" content="<%- csrf %>">
   <% if (liveReload) { -%><meta name="livereload" content="<%- liveReload %>"><% } -%>
-
+  <link rel="stylesheet" href="https://uicdn.toast.com/tui-image-editor/latest/tui-image-editor.css">
   <link rel="stylesheet" href="/dashboard/stylesheets/dashboard.css" data-turbolinks-track="reload">
   <script src="/dashboard/javascripts/dashboard.js" data-turbolinks-track="reload"></script>
 </head>
 <body class="dashboard">
+  <div class="image-editor" id="image-editor">
+    <div id="tui-image-editor"></div>
+    <button class="image-editor__discard" id="image-editor-discard">Discard</button>
+    <button class="image-editor__save" id="image-editor-save">Save</button>
+  </div>
   <header class="navbar">
     <a href="/dashboard/account/edit" class="account">
       <img src="<%- user.gravatar %>">

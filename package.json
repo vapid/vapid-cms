@@ -93,6 +93,7 @@
     "strftime": "^0.10.0",
     "style-loader": "^0.20.3",
     "tmp": "^0.0.33",
+    "tui-image-editor": "^3.9.0",
     "turbolinks": "^5.2.0",
     "umzug": "^2.1.0",
     "unfurl.js": "^1.1.6",
@@ -106,7 +107,7 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jest": "^21.15.1",
     "faker": "^4.1.0",
-    "image-size": "^0.6.3",
+    "image-size": "^0.8.3",
     "jest": "^24.1.0",
     "recursive-readdir": "^2.2.2",
     "supertest": "^3.0.0"
