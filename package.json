@@ -38,7 +38,7 @@
     "ace-builds": "^1.4.3",
     "animated-gif-detector": "^1.2.0",
     "aws4": "^1.7.0",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "colors": "^1.1.2",
     "commander": "^2.12.2",
     "css-loader": "^3.0.0",
