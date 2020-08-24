@@ -30,7 +30,7 @@ const ImageEditor = require('tui-image-editor');
 let imageEditor = null;
 async function ensureEditor(path) {
   if (imageEditor) {
-    await imageEditor.loadImageFromURL(path, 'image').then((res) => console.log(res));
+    await imageEditor.loadImageFromURL(path, 'image');
     return imageEditor;
   }
   const container = document.getElementById('tui-image-editor');
