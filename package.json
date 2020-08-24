@@ -99,7 +99,8 @@
     "unfurl.js": "^1.1.6",
     "update-notifier": "^2.5.0",
     "webpack": "^4.8.2",
-    "write-pkg": "^3.1.0"
+    "write-pkg": "^3.1.0",
+    "image-size": "^0.8.3"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
@@ -107,7 +108,6 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jest": "^21.15.1",
     "faker": "^4.1.0",
-    "image-size": "^0.8.3",
     "jest": "^24.1.0",
     "recursive-readdir": "^2.2.2",
     "supertest": "^3.0.0"
