@@ -89,7 +89,7 @@ const rand = window.crypto.getRandomValues.bind(window.crypto);
 const uuid = () => ('' + 1e7 + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (+c ^ rand(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16));
 
 const init = () => {
-  [...document.querySelectorAll('textarea')].map(autoExpand);
+  Array.from(document.querySelectorAll('textarea')).map(autoExpand);
   const settingsButton = document.getElementById('page-settings');
   settingsButton && settingsButton.addEventListener('click', () => {
     document.querySelector('.metadata').classList.toggle('open');
@@ -116,7 +116,7 @@ const init = () => {
     document.getElementById('image-editor').classList.remove('image-editor--visible');
   });
 
-  for (const link of [...document.querySelectorAll('.field__link')]) {
+  for (const link of Array.from(document.querySelectorAll('.field__link'))) {
     const name = link.querySelector('input[type=text]');
     const sel = link.querySelector('select');
     const url = link.querySelector('input[type=url]');

@@ -27,6 +27,35 @@ Linebreak.tagName = 'BR';
 
 Quill.register(Linebreak);
 
+const bindings = Object.assign(
+  {},
+  QuillImageBindings,
+  QuillHrBindings,
+  QuillButtonBindings,
+  QuillVideoBindings,
+  {
+    linebreak: {
+      key: 13,
+      shiftKey: true,
+      handler(range) {
+        const currentLeaf = this.quill.getLeaf(range.index)[0];
+        const nextLeaf = this.quill.getLeaf(range.index + 1)[0];
+
+        this.quill.insertEmbed(range.index, 'linebreak', true, 'user');
+
+        // Insert a second break if:
+        // At the end of the editor, OR next leaf has a different parent (<p>)
+        if (nextLeaf === null || (currentLeaf.parent !== nextLeaf.parent)) {
+          this.quill.insertEmbed(range.index, 'linebreak', true, 'user');
+        }
+
+        // Now that we've inserted a line break, move the cursor forward
+        this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+      },
+    },
+  },
+);
+
 const options = {
   modules: {
     toolbar: [
@@ -40,31 +69,7 @@ const options = {
       matchVisual: false,
     },
     keyboard: {
-      bindings: {
-        ...QuillImageBindings,
-        ...QuillHrBindings,
-        ...QuillButtonBindings,
-        ...QuillVideoBindings,
-        linebreak: {
-          key: 13,
-          shiftKey: true,
-          handler(range) {
-            const currentLeaf = this.quill.getLeaf(range.index)[0];
-            const nextLeaf = this.quill.getLeaf(range.index + 1)[0];
-
-            this.quill.insertEmbed(range.index, 'linebreak', true, 'user');
-
-            // Insert a second break if:
-            // At the end of the editor, OR next leaf has a different parent (<p>)
-            if (nextLeaf === null || (currentLeaf.parent !== nextLeaf.parent)) {
-              this.quill.insertEmbed(range.index, 'linebreak', true, 'user');
-            }
-
-            // Now that we've inserted a line break, move the cursor forward
-            this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
-          },
-        },
-      },
+      bindings,
     },
   },
   theme: 'bubble',
@@ -126,7 +131,7 @@ document.addEventListener('turbolinks:load', () => {
     });
 
     quill.on('text-change', () => {
-      const els = [...editor.querySelectorAll('[style]')];
+      const els = Array.from(editor.querySelectorAll('[style]'));
       for (const el of els) { el.removeAttribute('style'); }
       const content = editor.querySelector('.ql-editor').innerHTML;
       input.value = content.replace(/^<p><br><\/p>/, '');
